@@ -1,0 +1,665 @@
+\documentclass{article}
+\begin{document}
+
+\section{Local repository, commits}
+
+\paragraph{Lokale map maken.} Git-projecten zullen we opslaan in een lokale map, \emph{niet} in de cloud (zoals OneDrive, Google Drive, Dropbox, ...). Git schrijft immers voortdurend bestanden weg en services als OneDrive zullen diezelfde bestanden tegelijk synchroniseren, dit kan conflicten, corrupte bestanden of prestatieproblemen veroorzaken.
+\begin{itemize}
+    \item Open Windows Explorer.
+    \item Typ in de adresbalk ``\texttt{C:\textbackslash}''.
+    \item Klik links in de knoppenbalk op \texttt{Nieuw}, \texttt{Map}.
+    \item Geef de map de naam ``\texttt{Projecten}''.
+    \item Maak nog een map aan in \texttt{C:\textbackslash Projecten} met de naam ``\texttt{gittest}''.
+\end{itemize}
+
+\paragraph{Lokale map openen in VSCode.} Een project bestaat typisch niet uit één bestand, maar uit heel wat bestanden die worden verzameld in een map. We openen in VSCode de lokale map die net is gemaakt.
+\begin{itemize}
+    \item Zorg ervoor dat er geen andere bestanden open staan in VSCode: \texttt{file}, \texttt{Close Folder}.
+    \item Open de map \texttt{C:\textbackslash Projecten\textbackslash gittest} in VSCode via \texttt{File}, \texttt{Open Folder}.
+    \item Maak meteen een nieuw tekstbestand aan (\texttt{ctrl+N}): \texttt{File}, \texttt{New Text File}. Typ hierin enkel je naam (lijn 1) en opleiding (lijn 2).
+    \item Sla dit bestand op (\texttt{ctrl+S}): \texttt{File}, \texttt{Save} met als naam ``\texttt{gegevens.txt}''.
+\end{itemize}
+
+\paragraph{Lokaal repository initialiseren.} 
+Op dit moment is de werkmap een gewone bestandsmap zonder versiecontrole. Om die te activeren, maken we er een Git-repository van.
+\begin{itemize}
+    \item Klik in VSCode op het icoon \texttt{Source Control} (links in de knoppenbalk).
+    \item Klik op \texttt{Manage Workspace Trust} en daarna op \texttt{Trust}. Code uit een onbekende bron open je veiligheidshalve in \texttt{Restricted mode}, zodat deze enkel kan worden gelezen en aangepast maar bijvoorbeeld niet uitgevoerd.
+    \item Klik op \texttt{Initialize Repository} en  \texttt{Yes} om de repository te initialiseren.
+    \begin{itemize}
+        \item Je ziet dat het bestand \texttt{gegevens.txt} wordt vermeld onder \texttt{Changes}. Onderaan in de zijbalk is de \texttt{Graph} nog leeg, hier verschijnt later de inhoud van de repository.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Eerste commit.} Nu kunnen we een het eerste bestand aan de repository doorvoeren. 
+\begin{itemize}
+    \item Tik in het vak \texttt{Message} onder \texttt{Changes} een beschrijving van de aanpassingen, in dit geval bijvoorbeeld ``Add initial content''. Het icoontje rechts in het \texttt{Message}-vak laat toe een automatische beschrijving te genereren.
+    \item Klik op \texttt{Commit}, en kies voor \texttt{Always} bij de pop-up vraag over \texttt{Changes}\footnote{Hierdoor voegt \texttt{VSCode} de gewijzigde bestanden automatisch toe aan de commit. Later bekijken we hoe Git normaal een afzonderlijke "stage"-stap gebruikt.}.
+    \begin{itemize}
+        \item De \texttt{gegevens.txt} verschijnt in het \texttt{Graph}-overzicht, onder de beschrijving van de commit, met daarnaast de letter \texttt{A} (added file).
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Aanpassingen doorvoeren aan een bestand.} Nu zullen we het bestand \texttt{gegevens.txt} aanpassen en de aanpassingen doorvoeren naar de repository.
+\begin{itemize}
+    \item Voeg aan het bestand \texttt{gegevens.txt} een derde lijn toe met je woonplaats. Sla het bestand op (\texttt{ctrl+S}).
+    \item De bestandsnaam \texttt{gegevens.txt} is nu \emph{drie} keer te zien in de \texttt{VSCode}-omgeving:    
+        \begin{itemize}
+        \item Het bestand in het editorvenster, met de laatste aanpassingen, is opgeslagen maar zit nog niet in de repository.
+        \item Klik op \texttt{gegevens.txt} onder \texttt{Changes}. Een nieuw venster opent in de editor met daarin de verschillen tussen de recentste versie van het bestand en de versie die in de repository staat. De toegevoegde lijn wordt groen gemarkeerd.
+        \item Klik op \texttt{gegevens.txt} onder \texttt{Graph}. Een nieuw venster opent in de editor met daarin de versie van het bestand zoals die is opgeslagen in de meest recente commit van de repository. Deze bevat nog maar twee lijnen.
+    \end{itemize}
+    Git bewaart dus zowel de huidige bestanden in je werkmap als eerdere versies in de repository.
+    \item Vul opnieuw een beschrijving van de aanpassingen aan in het vak \texttt{Message} onder \texttt{Changes}, bijvoorbeeld ``Add location'' en klik op \texttt{Commit}. 
+    \begin{itemize}
+    \item De \texttt{Graph} toont nu twee commits, met de meest recente bovenaan en telkens met het bestand \texttt{gegevens.txt}. Door er op te klikken kan je de versies vergelijken.
+    \item Naast de meest recente commit staat de letter \texttt{M} (modified file).
+    \end{itemize}
+    Met een commit leg je een versie van je project permanent vast in de repository, de message laat toe om later de juiste versie terug te vinden. De repository bevat dus alle versies van je project, ook al zijn bestanden aangepast of zelf verwijderd uit de werkmap.
+\end{itemize}
+
+\paragraph{Bestanden toevoegen en verwijderen.} Nu zullen we nieuwe bestanden toevoegen en een bestaand bestand verwijderen.
+\begin{itemize}
+    \item Maak twee nieuwe bestanden (\texttt{ctrl+N}) met als namen \texttt{brol.txt} (willekeurige inhoud) en \texttt{bestanden.txt} (bevat op elke lijn een bestandsnaam). Sla deze bestanden op (\texttt{ctrl+S}) en voer een commit uit.
+    \begin{itemize}
+    \item In de \texttt{Graph} staan inmiddels drie commits, met daarbij telkens enkel de bestanden die in die commit zijn toegevoegd (\texttt{A}) of aangepast (\texttt{M}).
+    \end{itemize}
+    \item Verwijder via \texttt{Explorer} het bestand \texttt{brol.txt} uit de map (selecteren + \texttt{Delete}).
+    \item Schrap de bestandsnaam \texttt{brol.txt} uit de opsomming in \texttt{bestanden.txt} en commit de verwijderingen.
+    \begin{itemize}
+        \item In \texttt{Source Control} wordt het bestand \texttt{brol.txt} gemarkeerd met de letter \texttt{D} (deleted file).
+        \item De geschrapte lijn staat rood gemarkeerd en zonder lijnnummer in het bestand \texttt{bestanden.txt} onder de recentste commit in de \texttt{Graph}.
+    \end{itemize}
+    \end{itemize}
+Ook al is de informatie uit de map of uit een bestand verwijderd (zie \texttt{Explorer}), toch verdwijnt er geen informatie uit repository (zie \texttt{Source Control}).
+
+\paragraph{Terminologie.} Hiermee zijn alvast drie belangrijke begrippen geïntroduceerd:
+\begin{description}
+    \item Werkmap: de lokale map waarin de bestanden van het project staan.
+    \item Commit: een foto van de bestanden in de werkmap op één bepaald moment.
+    \item Repository: het geheel van alle commits en dus alle versies van de bestanden.
+\end{description}
+
+\section{Repository publiceren op GitHub}
+
+Tot nu toe staat de repository alleen op de eigen computer. Dat is niet erg veilig, je kan informatie verliezen door een defect of diefstal van je laptop. Het is op die manier ook niet mogelijk om samen te werken met anderen. Daarom zullen we een kopie van de repository online bewaren, op GitHub.
+
+\paragraph{GitHub-account aanmaken.}
+Wie nog geen GitHub-account heeft, maakt er eerst één aan. \begin{itemize}
+    \item Open een browser en ga naar \texttt{https://github.com}.
+    \item Klik op \texttt{Sign Up}.
+    \item Maak een account aan met je KU Leuven-adres\footnote{Extra functionaliteit van KU Leuven-account?}. Heb je al een eigen GitHub-account, dan gebruik je die \emph{niet} in de context van deze cursus.
+    \item Meld aan op GitHub.
+\end{itemize}
+
+\paragraph{Repository publiceren vanuit VSCode.} De lokale repository \texttt{gittest} zullen we nu publiceren op GitHub.
+\begin{itemize}
+    \item 
+    \item Klik in \texttt{Source Control} op \texttt{Publish Branch}. Deze knop staat er enkel als er geen hangende aanpassingen meer zijn die op een commit wachten.
+    \item Kies \texttt{Publish to GitHub Private Repository}. Een private repository is enkel zichtbaar voor de eigenaar en voor personen die expliciet toegang krijgen. Een public repository is zichtbaar voor iedereen.
+    \item Meld eventueel aan met je GitHub-account.
+    \item Bevestig de publicatie.
+\end{itemize}
+
+\paragraph{Repository bekijken op GitHub.}
+Na enkele seconden verschijnt de repository ook op GitHub. \begin{itemize}
+    \item In de browser, klik op \texttt{Repositories} op je \texttt{GitHub}-pagina en daarna op de naam van de repository \texttt{gittest}.
+    \item Verifieer dat de bestanden \texttt{gegevens.txt} en \texttt{bestanden.txt} zichtbaar zijn, met inhoud volgens de recentste commit.
+\end{itemize}
+Op dit moment bevat GitHub dus dezelfde commits als de lokale repository.
+
+\paragraph{Nieuwe wijzigingen lokaal toevoegen.}
+We zullen nu een nieuwe wijziging lokaal maken.
+\begin{itemize}
+    \item Voeg aan \texttt{gegevens.txt} een vierde lijn toe met je favoriete kleur en sla het bestand op (\texttt{Ctrl+S}).
+    \item Klik op \texttt{Commit}, verifieer de wijzigingen in \texttt{explorer} en vernieuw het bestand \texttt{gegevens.txt} op \texttt{GitHub} (\texttt{F5}).
+    \begin{itemize}
+        \item Zoals verwacht is het lokale bestand aangepast.
+        \item De favoriete kleur is echter nog niet zichtbaar op GitHub.
+        \item In \texttt{Source Control} staat de laatste commit in een andere kleur dan de voorgaande commits. Twee icoontjes (concentrische cirkels en wolk) geven aan welke de actieve lokale commit is, en welke de recentste commit is die op GitHub staat.
+    \end{itemize}
+\end{itemize}
+De commit is lokaal opgeslagen, maar nog niet naar GitHub gestuurd.
+
+\paragraph{Push uitvoeren.} Om de nieuwe commit naar GitHub te sturen, gebruiken we een \emph{push}.
+\begin{itemize}
+    \item Klik in \texttt{Source Control} op \texttt{Sync Changes}.
+    \item Vernieuw de GitHub-webpagina (\texttt{F5}) en verifieer dat de kleur nu wel zichtbaar is in \texttt{gegevens.txt}.
+\end{itemize}
+
+\paragraph{Wijzigingen rechtstreeks op GitHub aanbrengen.} Niet alle wijzigingen moeten vanaf de eigen computer gebeuren. Een bestand kan ook rechtstreeks op GitHub worden aangepast.
+\begin{itemize}
+    \item Open op GitHub het bestand \texttt{gegevens.txt} en klik op het potlood-icoon (\texttt{Edit this file}). \item Zet op de vijfde lijn je favoriete hobby.
+    \item Klik op \texttt{Commit changes} en bevestig.
+    \item Ga na of de hobby in \texttt{VSCode} zichtbaar is. Dat blijkt nog niet het geval te zijn.
+\end{itemize}
+
+ \paragraph{Pull uitvoeren.} 
+ GitHub bevat nu een recentere versie dan de lokale repository, om de wijzigingen van GitHub naar de eigen computer te halen, gebruiken we een \emph{pull}.
+ \begin{itemize}
+    \item Klik op \texttt{Sync Changes}, het icoontje met de twee pijltjes helemaal links onderaan het \texttt{VSCode}-scherm\footnote{Verschil met Pull bij Graph?}
+    \item Verifieer dat de hobby nu ook lokaal zichtbaar is.
+\end{itemize}
+
+\paragraph{Terminologie.}
+\begin{itemize}
+    \item Lokale repository: staat op je eigen computer.
+    \item Commit: wijzigingen vastleggen in de lokale repository.
+    \item Remote repository: staat online, op GitHub.
+    \item Push: lokale wijzigingen naar GitHub sturen.
+    \item Pull: wijzigingen op GitHub naar je eigen computer halen.
+\end{itemize}
+
+
+Hier zou ik opnieuw dezelfde principes volgen als in de vorige hoofdstukken:
+
+slechts één nieuw concept tegelijk introduceren;
+alle handelingen uitvoeren in VSCode;
+de student eerst laten zien wat een branch doet;
+pas op het einde de term definiëren.
+
+Ik zou hoofdstuk 4 zelfs nog geen merge laten uitvoeren. Het doel is enkel begrijpen dat verschillende branches verschillende versies van hetzelfde project kunnen bevatten.
+
+\section{Werken met branches}
+
+Tot nu toe hebben we telkens rechtstreeks gewerkt op de hoofdversie van de repository. Soms willen we echter veranderingen uitproberen zonder de bestaande versie te wijzigen. Denk aan een computerprogramma waarvan versie 1 correct werkt, maar waarvan je een deel wil herschrijven om het sneller te maken. Zolang je de nieuwe versie nog niet getest hebt, en geverifieerd dat deze effectief sneller is, wil je de bestaande versie niet overschrijven maar behouden en blijven gebruiken.
+
+Daarvoor gebruiken we een \emph{branch}. Een branch is een alternatieve versie van dezelfde repository. Elke branch heeft zijn eigen geschiedenis van commits.
+
+\paragraph{De huidige branch bekijken.}
+
+\begin{itemize}
+    \item Helemaal onderaan links in \texttt{VSCode} verschijnt de naam van de huidige branch, op dit moment heet deze ``\texttt{main}''. Dit is de naam van de hoofdversie van de repository. Tot nu toe werden alle commits op deze branch gemaakt.
+    \item Verifieer dat dezelfde branchnaam op GitHub vermeld staat. De branch wordt er met hetzelfde symbool aangeduid als de \texttt{Source control}-knop in \texttt{VSCode}.
+\end{itemize}
+
+\paragraph{Een nieuwe branch maken.} We zullen nu een nieuwe branch maken waarin we wijzigingen kunnen uitproberen.
+
+\begin{itemize}
+    \item Klik in \texttt{VSCode} onderaan links op de branchnaam \texttt{main}.
+    \item Kies in het lijstje opties dat verschijnt voor \texttt{Create New Branch}.
+    \item Geef de branch de naam ``\texttt{vakken}'' en druk op \texttt{Enter}.
+    \item Door opnieuw links onderaan op de branchnaam te klikken, kan je snel wisselen tussen \texttt{vakken} en \texttt{main}. Verifieer dat beide branches momenteel nog identiek zijn.
+    \item Verifieer dat de nieuwe branch \texttt{vakken} momenteel enkel lokaal bestaat en nog niet te zien op GitHub.
+\end{itemize}
+
+\paragraph{Een wijziging maken op de nieuwe branch, local repository.} We zullen nu een wijziging maken op de branch \texttt{vakken}.
+
+\begin{itemize}
+    \item Selecteer de branch \texttt{vakken} en maak een nieuw bestand \texttt{vakken.txt}.
+    \item Zet in het bestand een lijst van je favoriete vakken.
+    \item Voer een \texttt{Commit} uit.
+    \item Schakel tussen beide branches en verifieer dat de wijziging enkel zichtbaar is op de branch \texttt{vakken}.
+\end{itemize}
+
+\paragraph{Een nieuwe brach op de GitHub-repository.} Nu maken we een nieuwe branch op GitHub aan.
+
+TOT HIER
+
+\begin{itemize}
+    \item
+    \item Schakel terug naar \texttt{main}.
+    \item Open \texttt{gegevens.txt}.
+    \item Voeg onderaan een nieuwe lijn toe met je favoriete vakantiebestemming.
+    \item Sla het bestand op.
+    \item Commit de wijziging met bijvoorbeeld \texttt{Add holiday destination}.
+\end{itemize}
+
+\paragraph{De verschillen bekijken.}
+
+Vergelijk nu beide branches.
+
+\begin{itemize}
+    \item Schakel naar \texttt{main}.
+    \item Open \texttt{gegevens.txt}.
+\end{itemize}
+
+Deze versie bevat:
+
+\begin{itemize}
+    \item de oorspronkelijke woonplaats;
+    \item de vakantiebestemming.
+\end{itemize}
+
+Schakel vervolgens naar \texttt{woonplaats}.
+
+\begin{itemize}
+    \item Open opnieuw \texttt{gegevens.txt}.
+\end{itemize}
+
+Deze versie bevat:
+
+\begin{itemize}
+    \item de gewijzigde woonplaats;
+    \item geen vakantiebestemming.
+\end{itemize}
+
+Beide branches bevatten dus verschillende versies van hetzelfde project.
+
+\paragraph{Branches publiceren op GitHub.}
+
+Momenteel bestaat de branch \texttt{woonplaats} alleen lokaal.
+
+\begin{itemize}
+    \item Schakel naar de branch \texttt{woonplaats}.
+    \item Open \texttt{Source Control}.
+    \item Klik op \texttt{Publish Branch} of \texttt{Sync Changes}.
+\end{itemize}
+
+De branch wordt nu ook naar GitHub verzonden.
+
+\begin{itemize}
+    \item Open de repository op GitHub.
+    \item Klik boven de bestandenlijst op de branchselector.
+    \item Controleer dat zowel \texttt{main} als \texttt{woonplaats} zichtbaar zijn.
+\end{itemize}
+
+\paragraph{Terminologie.}
+
+\begin{itemize}
+    \item \texttt{branch}: een alternatieve versie van de repository.
+    \item \texttt{main}: de hoofdbranch van de repository, waarin de stabiele versie van het project wordt bewaard.
+\end{itemize}
+
+Een typische workflow is om commits niet rechtstreeks op de hoofdbranch te maken, maar eerst een nieuwe branch te maken, daar de wijzigingen uit te proberen en pas als alles correct werkt, de wijzigingen samen te voegen met de hoofdbranch. Dat proces van samenvoegen heet \emph{merge} en komt in de volgende sectie aan bod.
+
+\section{Werken met branches}
+
+Pas hier branches introduceren.
+
+Nieuwe terminologie
+branch
+main
+merge
+
+Meer niet.
+
+Geen:
+
+rebase
+cherry pick
+detached HEAD
+Verhaal
+
+"Je wil iets uitproberen zonder de hoofdversie stuk te maken."
+
+Praktische oefening
+
+Maak branch:
+
+woonplaats
+
+
+Wijzig:
+
+Gent
+
+
+naar
+
+Kortrijk
+
+
+Commit.
+
+Schakel terug naar main.
+
+Laat studenten kijken naar gegevens.txt.
+
+De wijziging is weg.
+
+Schakel opnieuw naar woonplaats.
+
+De wijziging is terug.
+
+Dit moment werkt altijd goed didactisch.
+
+Studenten beseffen dan:
+
+Een branch is geen kopie van één bestand maar een alternatieve versie van het project.
+
+\section{Merge zonder conflict}
+
+Nu een eenvoudige merge.
+
+main
+
+voeg lijn toe:
+
+Lievelingskleur
+
+branch
+
+voeg lijn toe:
+
+Geboorteplaats
+
+
+Ander deel van hetzelfde bestand.
+
+Merge.
+
+Resultaat:
+
+beide lijnen aanwezig.
+
+Zo leren ze:
+
+Git kan veel merges automatisch oplossen.
+
+\section{Merge met conflict}
+
+Dit is een natuurlijk vervolg.
+
+main
+Woonplaats: Gent
+
+branch
+Woonplaats: Kortrijk
+
+
+Merge.
+
+Nu ontstaat een conflict.
+
+Git weet niet welke versie juist is.
+
+VSCode toont:
+
+Current
+Incoming
+Both
+
+Laat studenten expliciet kiezen.
+
+Daarna commit.
+
+Dit is waarschijnlijk het belangrijkste hoofdstuk van de hele cursus.
+
+Veel beginners denken dat Git magie is.
+
+Een conflict laat zien dat Git soms gewoon hulp nodig heeft.
+
+\section{Samenwerken met meerdere personen}
+
+Nu pas meerdere gebruikers.
+
+Anders wordt het cognitief te zwaar.
+
+Verhaal
+
+Alice, Bob en Charlie werken aan een groepswerk.
+
+Repository:
+
+projectgroep
+
+
+Bestanden:
+
+inleiding.txt
+resultaten.txt
+besluit.txt
+
+Alice
+
+werkt aan inleiding.
+
+Bob
+
+werkt aan resultaten.
+
+Charlie
+
+werkt aan besluit.
+
+Iedereen:
+
+pull
+wijzigen
+commit
+push
+
+Hier ontstaan meestal geen conflicten.
+
+Dat toont waarom Git nuttig is.
+
+\section{Conflicten tussen groepsleden}
+
+Nu geef je doelbewust overlap.
+
+Iedereen past dezelfde lijn aan.
+
+Bijvoorbeeld:
+
+Titel project
+
+
+Studenten moeten:
+
+pull
+conflict zien
+bespreken
+beste versie kiezen
+commit uitvoeren
+
+Dit is eigenlijk de eerste echte samenwerkingssituatie.
+
+\section{Issues en feature requests}
+
+Pas nadat studenten begrijpen wat samenwerking is.
+
+Anders lijkt een issue een vreemd extraatje.
+
+Nieuwe terminologie
+issue
+bug
+feature request
+assignee
+Oefening
+
+Laat repository bevatten:
+
+studentenapp
+
+
+Voorbeelden:
+
+Bug
+Naam wordt niet opgeslagen.
+
+Feature request
+Voeg donkere modus toe.
+
+Verbetering
+Voeg export naar PDF toe.
+
+
+Studenten maken zelf enkele issues.
+
+Daarna:
+
+issue toewijzen;
+sluiten na oplossing.
+
+Zo ontstaat het verband:
+
+issue
+   ↓
+branch
+   ↓
+commit
+   ↓
+merge
+   ↓
+issue sluiten
+
+\section{To-do's en projectbeheer}
+
+Pas helemaal op het einde.
+
+Nu kunnen GitHub Projects of eenvoudige task boards geïntroduceerd worden.
+
+Kolommen:
+
+To do
+Doing
+Done
+
+
+Voorbeeld:
+
+To doInleiding schrijven
+Grafieken toevoegen
+Besluit nalezen
+
+Studenten slepen taken doorheen de workflow.
+
+Samenvattende leerlijn
+
+Ik zou de terminologie ongeveer in deze volgorde introduceren:
+
+repository
+commit
+push
+pull
+branch
+merge
+merge conflict
+collaborator
+issue
+feature request
+project board
+
+Dat komt overeen met de natuurlijke vragen die studenten krijgen:
+
+Hoe bewaar ik een versie?
+
+→ commit
+
+Hoe zet ik die online?
+
+→ push
+
+Hoe haal ik wijzigingen terug?
+
+→ pull
+
+Hoe experimenteer ik veilig?
+
+→ branch
+
+Hoe combineer ik werk?
+
+→ merge
+
+Wat als we hetzelfde aanpassen?
+
+→ conflict
+
+Hoe organiseren we teamwork?
+
+→ issues en project boards
+
+Zo blijft elk hoofdstuk even concreet als je huidige eerste deel en introduceer je telkens slechts één of twee nieuwe concepten tegelijk. Dat voorkomt dat Git voor beginners een verzameling losse commando's wordt.
+
+\end{document}
+
+
+
+File > New Text File
+Typ "Naam: ..."
+Typ "Opleiding: ..."
+File > Save > C:\Projecten\gittest\gegevens.txt
+
+*Verkenner
+Bestand bestaat!
+
+\end{itemize}
+
+, die we zullen \emph{initialiseren} als een Git-repository. In deze repository zullen we bestanden toevoegen, verwijderen en aanpassen. Elke aanpassing wordt opgeslagen in een \emph{commit}. We kunnen de geschiedenis van commits bekijken in een \emph{graph} en de verschillen tussen de bestanden bekijken.
+
+
+ Initialiseer een repository en maak een bestand aan. Voeg wat tekst toe en commit dit bestand. Voeg nog een bestand toe, commit dit ook. Verwijder een bestand en commit de verwijdering. Bekijk de graph van commits en de verschillen tussen de bestanden.
+*Verkenner
+Nieuw map maken
+C:\Projecten\gittest
+
+
+*VScode
+Source control > Changes: Bestand vermeld
+Source control > Graph: empty
+
+Source control > Changes > Message: Basisgegevens ***dit is de naam van? commit?***
+Source control > Commit + yes ***stage?***
+
+Source control > Graph: Basisgegevens
+
+Typ "Woonplaats: ..."
+File > Save
+
+Source control > Changes > Message: Woonplaats toegevoegd
+Source control > Commit + yes
+
+Source control > Graph: Woonplaats-Basisgegevens
+
+Typ "Quote: ..."
+File > Save
+
+Source control > Changes > Message: Quote toegevoegd
+Source control > Commit + yes
+
+Source control > Graph: Quote toegevoegd-Woonplaats toegevoegd-Basisgegevens
+
+Klik op namen in graph: bevatten allemaal zelfde bestand
+Klik op bestanden: tonen de verschillen met huidige versies
+Rechts in Graph: A (added file) M (modified file)
+
+File > New
+File > Save > C:\Projecten\gittest\stappenplan.txt
+File > New
+File > Save > C:\Projecten\gittest\blabla.txt
+
+Explorer: bestand bestaat
+Source control: bestand nog niet in de graph, enkel bij changes
+
+Source control > Changes > Message: Stappenplan toegevoegd
+Source control > Commit + yes
+
+Source control > Graph: Stappenplan toegevoegd-Quote toegevoegd-Woonplaats toegevoegd-Basisgegevens
+Source control > Graph: commits tonen enkel bestanden die effectief zijn veranderd
+
+*Explorer > blabla.txt > delete
+
+Source control > Changes > Message: Remove blabla.txt
+Source control > Commit + yes
+
+Graph > blabla D (deleted file)
+
+Conclusie:
+- commits tonen tussenstappen in proces.
+- message laat toe om specifieke versie te zoeken.
+- geen info verloren. informatie of bestand weg uit map > zit wel nog in Repository
+
+Publish branch: repository "uploaden" naar github ***push***
+"main" ***is er reden om als single user met meerdere branches te werken*** 
+blauw locatie-icoon en paarse wolkje tonen locatie van lokale repo vs remote repo
+blauwe tree: lokale deel, paarse tree: remote deel (andere kleuren bij complexere bomen)
+
+"sync changes" om verdere aanpassingen te uploaden
+
+Github > Branch > New branch: "branchremote"
+New file > blablaremote
+
+VScode: onderaan sync + branch kiezen
+
+of ***welke methode?***
+
+VSCode: onderaan "main/branch" klikken en nieuwe maken "branchlokaal"
+New file > blablalokaal
+
+***oranje wolk origin/branch???***
+
+Commits: aanpassingen die zonder meer doorgevoerd worden. 1 user tegelijk
+Branch: afzonderlijke versie. aanpassingen kunnen later samengevoegd worden van meerdere users tegelijk
+\end{document}

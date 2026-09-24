@@ -1,0 +1,42 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.run.xml
+*.xdv
+*.nav
+*.snm
+*.vrb
+*.lof
+*.lot
+*.ilg
+*.ind
+*.idx
+*.maf
+*.mtc
+*.mtc0
+*.slg
+*.slo
+*.sls
+*.stp
+*.gz
+
+# TeXstudio / editor files
+*.swp
+*.tmp
+*.bak
+*~
+
+# VS Code
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
