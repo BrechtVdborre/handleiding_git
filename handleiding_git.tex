@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage[dutch]{babel}
 \begin{document}
 
 \section{Local repository, commits}
@@ -11,6 +12,7 @@
     \item Geef de map de naam ``\texttt{Projecten}''.
     \item Maak nog een map aan in \texttt{C:\textbackslash Projecten} met de naam ``\texttt{gittest}''.
 \end{itemize}
+Het hele punt van git is natuurlijk wel om ook een kopie van de repository in de cloud te bewaren, als backup en om te delen met anderen, maar dat regelen we later in deze handleiding.
 
 \paragraph{Lokale map openen in VSCode.} Een project bestaat typisch niet uit één bestand, maar uit heel wat bestanden die worden verzameld in een map. We openen in VSCode de lokale map die net is gemaakt.
 \begin{itemize}
@@ -50,17 +52,17 @@ Op dit moment is de werkmap een gewone bestandsmap zonder versiecontrole. Om die
         \item Klik op \texttt{gegevens.txt} onder \texttt{Graph}. Een nieuw venster opent in de editor met daarin de versie van het bestand zoals die is opgeslagen in de meest recente commit van de repository. Deze bevat nog maar twee lijnen.
     \end{itemize}
     Git bewaart dus zowel de huidige bestanden in je werkmap als eerdere versies in de repository.
-    \item Vul opnieuw een beschrijving van de aanpassingen aan in het vak \texttt{Message} onder \texttt{Changes}, bijvoorbeeld ``Add location'' en klik op \texttt{Commit}. 
+    \item Typ opnieuw een beschrijving van de aanpassingen in het vak \texttt{Message} onder \texttt{Changes}, bijvoorbeeld ``Add location'' en klik op \texttt{Commit}. 
     \begin{itemize}
     \item De \texttt{Graph} toont nu twee commits, met de meest recente bovenaan en telkens met het bestand \texttt{gegevens.txt}. Door er op te klikken kan je de versies vergelijken.
     \item Naast de meest recente commit staat de letter \texttt{M} (modified file).
     \end{itemize}
-    Met een commit leg je een versie van je project permanent vast in de repository, de message laat toe om later de juiste versie terug te vinden. De repository bevat dus alle versies van je project, ook al zijn bestanden aangepast of zelf verwijderd uit de werkmap.
+    Met een commit leg je een versie van je project permanent vast in de repository, de message laat toe om later de juiste versie terug te vinden. De repository bevat dus alle versies van je project, ook al zijn bestanden aangepast of zelfs verwijderd uit de werkmap.
 \end{itemize}
 
 \paragraph{Bestanden toevoegen en verwijderen.} Nu zullen we nieuwe bestanden toevoegen en een bestaand bestand verwijderen.
 \begin{itemize}
-    \item Maak twee nieuwe bestanden (\texttt{ctrl+N}) met als namen \texttt{brol.txt} (willekeurige inhoud) en \texttt{bestanden.txt} (bevat op elke lijn een bestandsnaam). Sla deze bestanden op (\texttt{ctrl+S}) en voer een commit uit.
+    \item Maak twee nieuwe bestanden (\texttt{ctrl+N}) met als namen \texttt{brol.txt} (willekeurige inhoud) en \texttt{bestanden.txt} (bevat drie lijnen met telkens de naam van een bestand in de repository). Sla deze bestanden op (\texttt{ctrl+S}) en voer een commit uit.
     \begin{itemize}
     \item In de \texttt{Graph} staan inmiddels drie commits, met daarbij telkens enkel de bestanden die in die commit zijn toegevoegd (\texttt{A}) of aangepast (\texttt{M}).
     \end{itemize}
@@ -74,11 +76,11 @@ Op dit moment is de werkmap een gewone bestandsmap zonder versiecontrole. Om die
 Ook al is de informatie uit de map of uit een bestand verwijderd (zie \texttt{Explorer}), toch verdwijnt er geen informatie uit repository (zie \texttt{Source Control}).
 
 \paragraph{Terminologie.} Hiermee zijn alvast drie belangrijke begrippen geïntroduceerd:
-\begin{description}
-    \item Werkmap: de lokale map waarin de bestanden van het project staan.
-    \item Commit: een foto van de bestanden in de werkmap op één bepaald moment.
-    \item Repository: het geheel van alle commits en dus alle versies van de bestanden.
-\end{description}
+\begin{itemize}
+    \item \emph{Werkmap}: de lokale map waarin de bestanden van het project staan.
+    \item \emph{Commit}: een foto van de bestanden in de werkmap op één bepaald moment.
+    \item \emph{Repository}: het geheel van alle commits en dus alle versies van de bestanden.
+\end{itemize}
 
 \section{Repository publiceren op GitHub}
 
@@ -94,7 +96,6 @@ Wie nog geen GitHub-account heeft, maakt er eerst één aan. \begin{itemize}
 
 \paragraph{Repository publiceren vanuit VSCode.} De lokale repository \texttt{gittest} zullen we nu publiceren op GitHub.
 \begin{itemize}
-    \item 
     \item Klik in \texttt{Source Control} op \texttt{Publish Branch}. Deze knop staat er enkel als er geen hangende aanpassingen meer zijn die op een commit wachten.
     \item Kies \texttt{Publish to GitHub Private Repository}. Een private repository is enkel zichtbaar voor de eigenaar en voor personen die expliciet toegang krijgen. Een public repository is zichtbaar voor iedereen.
     \item Meld eventueel aan met je GitHub-account.
@@ -116,7 +117,7 @@ We zullen nu een nieuwe wijziging lokaal maken.
     \begin{itemize}
         \item Zoals verwacht is het lokale bestand aangepast.
         \item De favoriete kleur is echter nog niet zichtbaar op GitHub.
-        \item In \texttt{Source Control} staat de laatste commit in een andere kleur dan de voorgaande commits. Twee icoontjes (concentrische cirkels en wolk) geven aan welke de actieve lokale commit is, en welke de recentste commit is die op GitHub staat.
+        \item In \texttt{Source Control} staat de laatste commit in een andere kleur dan de voorgaande commits. Twee icoontjes geven aan welke de actieve lokale commit is, en welke de recentste commit is die op GitHub staat.
     \end{itemize}
 \end{itemize}
 De commit is lokaal opgeslagen, maar nog niet naar GitHub gestuurd.
@@ -130,7 +131,7 @@ De commit is lokaal opgeslagen, maar nog niet naar GitHub gestuurd.
 \paragraph{Wijzigingen rechtstreeks op GitHub aanbrengen.} Niet alle wijzigingen moeten vanaf de eigen computer gebeuren. Een bestand kan ook rechtstreeks op GitHub worden aangepast.
 \begin{itemize}
     \item Open op GitHub het bestand \texttt{gegevens.txt} en klik op het potlood-icoon (\texttt{Edit this file}). \item Zet op de vijfde lijn je favoriete hobby.
-    \item Klik op \texttt{Commit changes} en bevestig.
+    \item Klik op \texttt{Commit changes} in Github en bevestig.
     \item Ga na of de hobby in \texttt{VSCode} zichtbaar is. Dat blijkt nog niet het geval te zijn.
 \end{itemize}
 
@@ -143,15 +144,16 @@ De commit is lokaal opgeslagen, maar nog niet naar GitHub gestuurd.
 
 \paragraph{Terminologie.}
 \begin{itemize}
-    \item Lokale repository: staat op je eigen computer.
-    \item Commit: wijzigingen vastleggen in de lokale repository.
-    \item Remote repository: staat online, op GitHub.
-    \item Push: lokale wijzigingen naar GitHub sturen.
-    \item Pull: wijzigingen op GitHub naar je eigen computer halen.
+    \item \emph{Local repository}: staat op je eigen computer.
+    \item \emph{Commit}: wijzigingen vastleggen in de lokale repository.
+    \item \emph{Remote repository}: staat online, op GitHub.
+    \item \emph{Push}: lokale wijzigingen naar GitHub sturen.
+    \item \emph{Pull}: wijzigingen op GitHub naar je eigen computer halen.
 \end{itemize}
 
 
 \section{Werken met branches}
+\label{sec:branches}
 
 Tot nu toe hebben we telkens rechtstreeks gewerkt op de hoofdversie van de repository. Soms willen we echter veranderingen uitproberen zonder de bestaande versie te wijzigen. Denk aan een computerprogramma waarvan versie 1 correct werkt, maar waarvan je een deel wil herschrijven om het sneller te maken. Zolang je de nieuwe versie nog niet getest hebt, en geverifieerd dat deze effectief sneller is, wil je de bestaande versie niet overschrijven maar behouden en blijven gebruiken.
 
@@ -168,496 +170,273 @@ Daarvoor gebruiken we een \emph{branch}. Een branch is een alternatieve versie v
 
 \begin{itemize}
     \item Klik in \texttt{VSCode} onderaan links op de branchnaam \texttt{main}.
-    \item Kies in het lijstje opties dat verschijnt voor \texttt{Create New Branch}.
-    \item Geef de branch de naam ``\texttt{vakken}'' en druk op \texttt{Enter}.
+    \begin{itemize}
+        \item Er verschijnt een optie-lijstje onder de \texttt{Command Palette} met mogelijke commando's en een overzicht van de bestaande branches, momenteel enkel de branch \texttt{main} in de lokale repository en de (identieke) branch \texttt{origin/main} in de remote repository.
+    \end{itemize}
+    \item Kies voor \texttt{Create New Branch}, typ de naam ``\texttt{vakken}'' in het tekstveld en druk op \texttt{Enter}.
     \item Door opnieuw links onderaan op de branchnaam te klikken, kan je snel wisselen tussen \texttt{vakken} en \texttt{main}. Verifieer dat beide branches momenteel nog identiek zijn.
     \item Verifieer dat de nieuwe branch \texttt{vakken} momenteel enkel lokaal bestaat en nog niet te zien op GitHub.
 \end{itemize}
 
-\paragraph{Een wijziging maken op de nieuwe branch, local repository.} We zullen nu een wijziging maken op de branch \texttt{vakken}.
+\paragraph{Een wijziging maken op de nieuwe branch, local repository.} We zullen nu een wijziging maken op de branch \texttt{woonplaatsen}.
 
 \begin{itemize}
-    \item Selecteer de branch \texttt{vakken} en maak een nieuw bestand \texttt{vakken.txt}.
-    \item Zet in het bestand een lijst van je favoriete vakken.
+    \item Selecteer de branch \texttt{woonplaatsen} en maak daarin een nieuw bestand \texttt{woonplaatsen.txt}.
+    \item Zet in het bestand een lijst van je favoriete woonplaatsen.
     \item Voer een \texttt{Commit} uit.
-    \item Schakel tussen beide branches en verifieer dat de wijziging enkel zichtbaar is op de branch \texttt{vakken}.
+    \item Standaard worden in \texttt{Graph} enkel de commits van de huidige branch getoond. Klik naast \texttt{Graph} op het \texttt{Source Control}-icoontje, selecteer \texttt{All} en klik op OK.
+    \item Schakel heen en weer tussen beide branches door op de branchnaam in de statusbalk te klikken.
+    \begin{itemize}
+        \item Het nieuwe bestand is enkel zichtbaar is in de branch \texttt{woonplaatsen}.
+        \item De \texttt{Graph} toont de geschiedenis van de verschillende branches met verschillende kleuren. Labels en icoontjes geven aan waar elke branch zich momenteel bevindt. Het wolkje geeft de meest recente bekende versie van de (\texttt{main}-)branch op GitHub aan.
+        \item In het venster \texttt{Explorer}, maar ook in het besturingssysteem zelf, zijn enkel de bestanden van de geselecteerde branch te zien. De rest van de repository (geschiedenis van commits en branches) is bevat in een onzichtbare map \texttt{.git}.
+    \end{itemize}
 \end{itemize}
 
-\paragraph{Een nieuwe brach op de GitHub-repository.} Nu maken we een nieuwe branch op GitHub aan.
-
-TOT HIER: nu nieuwe branch op GitHub maken, en dan lokaal pushen en pullen. Ander voorbeeld dan Copilot-voorstel (geen conflicten, enkel verschillende bestanden)
+\paragraph{Een nieuwe brach op de GitHub-repository.} Nu maken we een nieuwe branch op GitHub aan en voegen er ook een extra bestand aan toe.
 
 \begin{itemize}
-    \item
-    \item Schakel terug naar \texttt{main}.
-    \item Open \texttt{gegevens.txt}.
-    \item Voeg onderaan een nieuwe lijn toe met je favoriete vakantiebestemming.
-    \item Sla het bestand op.
-    \item Commit de wijziging met bijvoorbeeld \texttt{Add holiday destination}.
+    \item Op GitHub staat momenteel naast de branch-naam \texttt{main} de tekst ``1 Branch''. Klik hierop en daarna op \texttt{New Branch}. Geef de branch de naam ``\texttt{vakken}''. In het veld \texttt{Source branch} kan je kies je een branch op te kopiëren (momenteel is enkel \texttt{main} beschikbaar).
+    \item Klik op de branch \texttt{vakken}, \texttt{Add file}, \texttt{Create new file}.
+    \item Geef het nieuwe bestand de naam \texttt{vakken.txt} en zet er de vakken in die je dit semester volgt.
+    \item Commit de wijziging op GitHub.
+    \begin{itemize}
+        \item Lokaal staan er momenteel twee branches: \texttt{main} en \texttt{woonplaats}.
+        \item Op GitHub staan ook twee branches:  \texttt{main} en \texttt{vakken}\footnote{active branches vs you branches?}.
+        \item Van de derde branch is in geen van beide repositories iets te bekennen.
+    \end{itemize}
 \end{itemize}
 
-\paragraph{De verschillen bekijken.}
+In wat volgt, proberen we alle branches samen te brengen. Dit kan uiteraard uitsluitend in \texttt{VSCode} want \texttt{GitHub} heeft geen toegang tot je lokale systeem.
 
-Vergelijk nu beide branches.
+\paragraph{Fetch -- online informatie ophalen.} 
 
 \begin{itemize}
-    \item Schakel naar \texttt{main}.
-    \item Open \texttt{gegevens.txt}.
+    \item Klik op de branch-naam in \texttt{VSCode}, links onderaan in de statusbalk. In het lijstje bekende branches staan de lokale branches (\texttt{main} en \texttt{woonplaats}) en de enige gekende remote branch (\texttt{origin/main}).
+    \item Klik op \texttt{Fetch From All Remotes} naast \texttt{Graph}. Hierdoor gaat \texttt{Git} na wat er online is veranderd. Er worden op dit moment nog geen bestanden aangepast.
+    \begin{itemize}
+        \item De remote branch (\texttt{origin/vakken}) verschijnt nu ook in het lijstje bekende branches als je op de branch-naam in de statusbalk klikt.
+    \end{itemize}
 \end{itemize}
 
-Deze versie bevat:
+\paragraph{Pull -- Branches van GitHub halen.} 
 
 \begin{itemize}
-    \item de oorspronkelijke woonplaats;
-    \item de vakantiebestemming.
+    \item Klik op de branch-naam in de statusbalk en in het lijstje dat verschijnt op \texttt{Create New Local Branch From...}.
+    \item Kies voor de branch \texttt{origin/vakken}.
+    \item Geef de nieuwe lokale branch de naam \texttt{vakken}.
+    \begin{itemize}
+        \item Verifieer dat zowel \texttt{origin/vakken} als \texttt{vakken} in de lijst bekende branches staan.
+        \item Schakel je over naar de branch \texttt{vakken}, dan verschijnt daarin het bestand \texttt{vakken.txt}.
+        \item Het bestand \texttt{vakken.txt} verschijnt niet in de branch \texttt{woonplaats} en omgekeerd. 
+    \end{itemize}
 \end{itemize}
 
-Schakel vervolgens naar \texttt{woonplaats}.
+\paragraph{Push -- Branches publiceren op GitHub.} 
 
 \begin{itemize}
-    \item Open opnieuw \texttt{gegevens.txt}.
-\end{itemize}
+    \item Schakel over naar de branch \texttt{woonplaats}. 
+    \item Klik op \texttt{Publish Branch}, de branch wordt nu ook naar GitHub verzonden. 
+    \begin{itemize}
+        \item Op GitHub zijn nu ook de drie branches zichtbaar: \texttt{main}, \texttt{woonplaats}, \texttt{vakken}.
+        \item In het \texttt{Graph}-venster \texttt{VSCode} worden de drie branches ten opzicht van elkaar getoond, in verschillende kleuren. Naast elke branch-naam staat nu ook een cloud-symbooltje in dezelfde kleur omdat local en remote repository volledig gesynchroniseerd zijn. 
+    \end{itemize}
+\end{itemize} 
 
-Deze versie bevat:
-
-\begin{itemize}
-    \item de gewijzigde woonplaats;
-    \item geen vakantiebestemming.
-\end{itemize}
-
-Beide branches bevatten dus verschillende versies van hetzelfde project.
-
-\paragraph{Branches publiceren op GitHub.}
-
-Momenteel bestaat de branch \texttt{woonplaats} alleen lokaal.
-
-\begin{itemize}
-    \item Schakel naar de branch \texttt{woonplaats}.
-    \item Open \texttt{Source Control}.
-    \item Klik op \texttt{Publish Branch} of \texttt{Sync Changes}.
-\end{itemize}
-
-De branch wordt nu ook naar GitHub verzonden.
-
-\begin{itemize}
-    \item Open de repository op GitHub.
-    \item Klik boven de bestandenlijst op de branchselector.
-    \item Controleer dat zowel \texttt{main} als \texttt{woonplaats} zichtbaar zijn.
-\end{itemize}
 
 \paragraph{Terminologie.}
 
 \begin{itemize}
-    \item \texttt{branch}: een alternatieve versie van de repository.
+    \item \emph{Branch}: een alternatieve versie van de repository.
     \item \texttt{main}: de hoofdbranch van de repository, waarin de stabiele versie van het project wordt bewaard.
+    \item \emph{Fetch}: nagaan welke nieuwe branches en commits op GitHub beschikbaar zijn, zonder de lokale bestanden te wijzigen
+    \item \emph{Pull} en \emph{Push}: wijzigingen worden afzonderlijk voor elke branch opgehaald of gepubliceerd.
 \end{itemize}
 
 Een typische workflow is om commits niet rechtstreeks op de hoofdbranch te maken, maar eerst een nieuwe branch te maken, daar de wijzigingen uit te proberen en pas als alles correct werkt, de wijzigingen samen te voegen met de hoofdbranch. Dat proces van samenvoegen heet \emph{merge} en komt in de volgende sectie aan bod.
 
 \section{Samenvoegen van branches: merge}
 
-Ander voorbeeld dan Copilot-voorstel
-1. geen conflicten, enkel bestaande verschillende bestanden
-2. geen conflicten, maar wel verschillende aanpassingen in hetzelfde bestand
-3. conflicten, waarbij expliciet gekozen moet worden welke versie behouden blijft
-
-
-
-Pas hier branches introduceren.
-
-Nieuwe terminologie
-branch
-main
-merge
-
-Meer niet.
-
-Geen:
-
-rebase
-cherry pick
-detached HEAD
-Verhaal
-
-"Je wil iets uitproberen zonder de hoofdversie stuk te maken."
-
-Praktische oefening
-
-Maak branch:
-
-woonplaats
-
-
-Wijzig:
-
-Gent
-
-
-naar
-
-Kortrijk
-
-
-Commit.
-
-Schakel terug naar main.
-
-Laat studenten kijken naar gegevens.txt.
-
-De wijziging is weg.
-
-Schakel opnieuw naar woonplaats.
-
-De wijziging is terug.
-
-Dit moment werkt altijd goed didactisch.
-
-Studenten beseffen dan:
-
-Een branch is geen kopie van één bestand maar een alternatieve versie van het project.
-
-\section{Merge zonder conflict}
-
-Nu een eenvoudige merge.
-
-main
-
-voeg lijn toe:
-
-Lievelingskleur
-
-branch
-
-voeg lijn toe:
-
-Geboorteplaats
-
-
-Ander deel van hetzelfde bestand.
-
-Merge.
-
-Resultaat:
-
-beide lijnen aanwezig.
-
-Zo leren ze:
-
-Git kan veel merges automatisch oplossen.
-
-\section{Merge met conflict}
-
-Dit is een natuurlijk vervolg.
-
-main
-Woonplaats: Gent
-
-branch
-Woonplaats: Kortrijk
-
-
-Merge.
-
-Nu ontstaat een conflict.
-
-Git weet niet welke versie juist is.
-
-VSCode toont:
-
-Current
-Incoming
-Both
-
-Laat studenten expliciet kiezen.
-
-Daarna commit.
-
-Dit is waarschijnlijk het belangrijkste hoofdstuk van de hele cursus.
-
-Veel beginners denken dat Git magie is.
-
-Een conflict laat zien dat Git soms gewoon hulp nodig heeft.
-
-\section{Samenwerken met meerdere personen}
-
-Nu pas meerdere gebruikers.
-
-Anders wordt het cognitief te zwaar.
-
-Verhaal
-
-Alice, Bob en Charlie werken aan een groepswerk.
-
-Repository:
-
-projectgroep
-
-
-Bestanden:
-
-inleiding.txt
-resultaten.txt
-besluit.txt
-
-Alice
-
-werkt aan inleiding.
-
-Bob
-
-werkt aan resultaten.
-
-Charlie
-
-werkt aan besluit.
-
-Iedereen:
-
-pull
-wijzigen
-commit
-push
-
-Hier ontstaan meestal geen conflicten.
-
-Dat toont waarom Git nuttig is.
-
-\section{Conflicten tussen groepsleden}
-
-Nu geef je doelbewust overlap.
-
-Iedereen past dezelfde lijn aan.
-
-Bijvoorbeeld:
-
-Titel project
-
-
-Studenten moeten:
-
-pull
-conflict zien
-bespreken
-beste versie kiezen
-commit uitvoeren
-
-Dit is eigenlijk de eerste echte samenwerkingssituatie.
-
-\section{Issues en feature requests}
-
-Pas nadat studenten begrijpen wat samenwerking is.
-
-Anders lijkt een issue een vreemd extraatje.
-
-Nieuwe terminologie
-issue
-bug
-feature request
-assignee
-Oefening
-
-Laat repository bevatten:
-
-studentenapp
-
-
-Voorbeelden:
-
-Bug
-Naam wordt niet opgeslagen.
-
-Feature request
-Voeg donkere modus toe.
-
-Verbetering
-Voeg export naar PDF toe.
-
-
-Studenten maken zelf enkele issues.
-
-Daarna:
-
-issue toewijzen;
-sluiten na oplossing.
-
-Zo ontstaat het verband:
-
-issue
-   ↓
-branch
-   ↓
-commit
-   ↓
-merge
-   ↓
-issue sluiten
-
-\section{To-do's en projectbeheer}
-
-Pas helemaal op het einde.
-
-Nu kunnen GitHub Projects of eenvoudige task boards geïntroduceerd worden.
-
-Kolommen:
-
-To do
-Doing
-Done
-
-
-Voorbeeld:
-
-To doInleiding schrijven
-Grafieken toevoegen
-Besluit nalezen
-
-Studenten slepen taken doorheen de workflow.
-
-Samenvattende leerlijn
-
-Ik zou de terminologie ongeveer in deze volgorde introduceren:
-
-repository
-commit
-push
-pull
-branch
-merge
-merge conflict
-collaborator
-issue
-feature request
-project board
-
-Dat komt overeen met de natuurlijke vragen die studenten krijgen:
-
-Hoe bewaar ik een versie?
-
-→ commit
-
-Hoe zet ik die online?
-
-→ push
-
-Hoe haal ik wijzigingen terug?
-
-→ pull
-
-Hoe experimenteer ik veilig?
-
-→ branch
-
-Hoe combineer ik werk?
-
-→ merge
-
-Wat als we hetzelfde aanpassen?
-
-→ conflict
-
-Hoe organiseren we teamwork?
-
-→ issues en project boards
-
-Zo blijft elk hoofdstuk even concreet als je huidige eerste deel en introduceer je telkens slechts één of twee nieuwe concepten tegelijk. Dat voorkomt dat Git voor beginners een verzameling losse commando's wordt.
-
-\end{document}
-
-
-
-File > New Text File
-Typ "Naam: ..."
-Typ "Opleiding: ..."
-File > Save > C:\Projecten\gittest\gegevens.txt
-
-*Verkenner
-Bestand bestaat!
-
+We zullen in dit deel drie soorten merges uitvoeren: die van nieuwe bestanden, van wijzigingen op verschillende plaatsen in hetzelfde bestand, en van wijzigingen op dezelfde plaats in een bestand, de gevreesde merge met conflicten.
+
+\paragraph{Lokale merge van nieuwe bestanden.} Momenteel bevatten de branches \texttt{woonplaats} en \texttt{vakken} elk een ander bestand dat nog niet in de branch \texttt{main} staat. We zullen beide branches samenvoegen met \texttt{main}.
+
+\begin{itemize}
+    \item Schakel over naar de \emph{doelbranch} \texttt{main}, waarin aanpassingen zullen worden overgenomen.
+    \item Typ \texttt{ctrl+P} om het \texttt{Command Palette} te openen.
+    \item Typ het commando \texttt{Git: Merge...} en klik daarna op de \emph{bronbranch} \texttt{woonplaats}, de branch waaruit aanpassingen zullen worden overgenomen.
+    \begin{itemize}
+        \item In \texttt{Explorer} verschijnt het bestand \texttt{woonplaatsen.txt}.
+        \item De \texttt{Graph} heeft \texttt{main} en \texttt{woonplaats} samengevoegd (zelfde kleur, beide branchnamen staan nu op dezelfde hoogte).
+        \item Een merge resulteert eigenlijk in een commit van de aanpassingen in de doelbranch.
+        \item De cloud-icoontjes tonen dat in de remote repository beide branches nog niet zijn samengevoegd.
+    \end{itemize}
+    \item Klik op \texttt{Sync changes} om de lokale aanpassingen naar GitHub te pushen.
+    \begin{itemize}
+        \item In de \texttt{Graph} horen de vier branches \texttt{main}, \texttt{origin/main}, \texttt{woonplaatsen} en \texttt{origin/woonplaatsen} nu bij dezelfde node.
+    \end{itemize}
 \end{itemize}
 
-, die we zullen \emph{initialiseren} als een Git-repository. In deze repository zullen we bestanden toevoegen, verwijderen en aanpassen. Elke aanpassing wordt opgeslagen in een \emph{commit}. We kunnen de geschiedenis van commits bekijken in een \emph{graph} en de verschillen tussen de bestanden bekijken.
+Na een merge blijven beide branches bestaan. Onmiddellijk na de merge bevatten ze dezelfde wijzigingen, maar nadien kunnen ze opnieuw onafhankelijk van elkaar evolueren. Verdere ontwikkeling kan gebeuren op de secundaire branch (\texttt{woonplaats}), waarna de nieuwe aanpassingen later opnieuw kunnen worden samengevoegd met de hoofdbranch \texttt{main}.
+
+\paragraph{Remote merge van nieuwe bestanden.} De branch \texttt{\texttt{vakken}} zullen we op GitHub samenvoegen met de hoofdbranch. Bij het samenwerken met meerdere personen zijn hierbij eigenlijk twee personen betrokken, de contributor en de reviewer:
+
+\begin{itemize}
+    \item[] Een \emph{contributor} doet een bijdrage aan een repository in een eigen branch en biedt na afloop aan om deze bijdrage samen te voegen:
+    \item Klik in \texttt{GitHub} op \texttt{Pull requests} en vervolgens op \texttt{New pull request}.
+    \item Kies in de drop-down list de ontvangende ``\texttt{base}''-branch \texttt{main} en rechts de branch \texttt{vakken} waaruit de aanpassingen zullen worden gehaald.
+    \begin{itemize}
+        \item Er verschijnt een lijst van alle commits die er ten opzichte van de \texttt{base}-branch zijn geweest.
+        \item Daaronder staat een lijst van alle bestanden (of bestandsinhouden, zie verder) die zijn gewijzigd.
+    \end{itemize}
+    \item Klik op \texttt{Create pull request}, geef een beschrijving en klik opnieuw op \texttt{Create pull request}.
+    \item[] De \emph{reviewer} krijgt een overzicht te zien van commits en eventuele conflicten (momenteel geen) en beslist om de merge al dan niet te laten doorgaan.
+    \item Klik op \texttt{Merge pull request}, voeg een commit message toe en bevestig met \texttt{Confirm merge}.
+    \begin{itemize}
+        \item Op GitHub bevatten \texttt{main} en \texttt{vakken} nu dezelfde bestanden.
+        \item In de lokale repository is de merge nog niet gebeurd.
+    \end{itemize}
+    \item Klik in \texttt{VSCode} op \texttt{Fetch From All Remotes}.
+    \begin{itemize}
+        \item De \texttt{Graph} toont dat \texttt{origin/main} een nieuwere commit bevat dan \texttt{main} en dat de branch \texttt{vakken} daarbij samengevoegd wordt.
+    \end{itemize}
+    \item Klik naast \texttt{Graph} op de knop \texttt{Pull}.
+    \begin{itemize}
+        \item In \texttt{Explorer} zijn nu alle bestanden samengebracht in de \texttt{main}-branch.
+        \item In de \texttt{Graph} bevinden \texttt{main} en \texttt{origin/main} zich opnieuw op dezelfde commit.\footnote{verder werken met merged branches: feature branches vs langlevende branches}
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Merge zonder conflicten.} We zullen nu twee verschillende wijzigingen maken op verschillende plaatsen in hetzelfde bestand.
+
+\begin{itemize}
+    \item Maak een nieuwe branch \texttt{programmeertaal},  voeg \emph{aan het einde} van het bestand \texttt{gegevens.txt} een nieuwe lijn toe met je favoriete programmeertaal, sla op en commit de wijziging.
+    \item Terug in de branch \texttt{main} voeg je in het bestand \texttt{gegevens.txt} \emph{boven je naam} je studentennummer toe. Opslaan en committen. De programmeertaal is in dit bestand nog niet te zien!
+    \item Merge de branch \texttt{opleiding} met \texttt{main} (\texttt{ctrl+shift+P}, \texttt{Git: Merge...}).
+    \begin{itemize}
+        \item Zowel het studentennummer als de favoriete programmeertaal verschijnen nu in het bestand \texttt{gegevens.txt} in de \texttt{main}-branch.
+    \end{itemize}
+\end{itemize}
+
+Git kon beide wijzigingen automatisch combineren omdat ze verschillende delen van hetzelfde bestand aanpasten. Dit werkt zolang de informatie op eenzelfde lijn niet is aangepast.
+
+\paragraph{Een merge met conflict.} We creëren eerst een situatie dat tot een conflict zal leiden, en zullen het daarna proberen oplossen.
+
+\begin{itemize}
+    \item Maak een nieuwe branch \texttt{conflict}, verander in het bestand \texttt{gegevens.txt} de woonplaats in \texttt{Minas Tirith}, sla op en commit de wijziging.
+    \item Terug in de branch \texttt{main} staat in \texttt{gegevens.txt} nog de oorspronkelijke woonplaats. Verander deze in \texttt{Camelot}. Opslaan en committen.
+    \item Merge de branch \texttt{conflict } met \texttt{main} (\texttt{ctrl+shift+P}, \texttt{Git: Merge...}).
+    \begin{itemize}
+        \item Git detecteert conflicterende aanpassingen en kan nu niet beslissen welke woonplaats correct is.
+        \item In de editor worden beide versies getoond met de mogelijke acties die de gebruiker kan ondernemen
+    \end{itemize}
+    \item Kies één van de mogelijkheden, \texttt{Accept Current Change} (deze lijn in de doelbranch \texttt{main} behouden), \texttt{Accept Incoming Change} (deze lijn vervangen volgens wat in bronbranch staat), \texttt{Accept Both Changes} (beide lijnen onder elkaar zetten).
+    \item Het resulterende bestand verschijnt nu bij \texttt{Source Control} onder \texttt{Merge Changes}. Om het conflict definitief op te lossen klik je op het plusteken (\texttt{Stage Changes}).\footnote{Klopt dit?}
+    \item Nu pas kan een commit uitgevoerd worden om het conflict definitief op te lossen en de merge te voltooien.
+    \item Push nog de laatste aanpassingen naar GitHub (\texttt{Sync Changes}).
+\end{itemize}
+
+\paragraph{Terminologie.}
+
+\begin{itemize}
+    
+    \item \emph{Merge commit}: een commit die het resultaat van een merge bewaart.
+    \item \emph{Bronbranch}: de branch waarvan de wijzigingen worden overgenomen.
+    \item \emph{Doelbranch}: de branch waarin de wijzigingen worden opgenomen (hierboven steeds \texttt{main}).
+    \item \emph{Pull request}: vraag van \emph{contributor} om aanpassingen in doelbranch op te nemen.
+    \item De \emph{reviewer} inspecteert de wijzigingen vooraleer de merge uit te voeren.
+    \item \emph{Merge conflict}: een situatie waarin Git niet automatisch kan bepalen welke versie moet worden behouden.
+\end{itemize}
+
+\section{Samenwerken, Issues en feature requests}
+
+Tot nu toe hebben we wijzigingen rechtstreeks uitgevoerd op bestanden. Bij grotere projecten is het echter nuttig om eerst vast te leggen \emph{wat} er moet gebeuren. Daarvoor gebruikt GitHub \emph{issues}. Deze beschrijven een taak die nog moet worden uitgevoerd, een nieuwe functie die moet worden toegevoegd of een fout die moet worden opgelost.
+
+\paragraph{Een issue en branch aanmaken.}  We zullen een eerste issue aanmaken voor onze repository. Zoals steeds worden wijzigingen niet rechtstreeks op \texttt{main} uitgevoerd, maar in een nieuwe branch die specifiek aan het issue gekoppeld is.
+
+\begin{itemize}
+    \item[] De reviewer wil dat een contributor aan het bestand \texttt{gegevens.txt} de naam van de favoriete film toevoegt.
+    \item Open de repository op GitHub en klik bovenaan op \texttt{Issues}.
+    \item Klik op \texttt{New Issue} en geef een titel (\texttt{1-film}) en beschrijving aan de issue.
+    \item Klik op \texttt{Create}.
+    \begin{itemize}
+        \item Het issue verschijnt nu in de lijst met openstaande issues.
+    \end{itemize}
+    \item Open het issue dat net is aangemaakt.
+    \item Klik op de tekst \texttt{Create branch} in de rechter kolom onder \texttt{Development}.
+    \item Geef een duidelijke branchnaam \texttt{1-film} die issue-nummer en omschrijving omvat.
+    \begin{itemize}
+        \item De branch bestaat momenteel enkel op GitHub.
+        \item Github voorziet Git-commando's om de nieuwe branch naar de lokale repository te pullen.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{De wijziging uitvoeren.} Deze kleine aanpassing kunnen we rechtstreeks op Github doorvoeren. Grotere issues vergen de fetch-pull-commit-push-cyclus uit deel \ref{sec:branches}.
+
+\begin{itemize}
+    \item Open op GitHub in de branch \texttt{1-film} het bestand \texttt{gegevens.txt}. Voeg een nieuwe lijn toe met daarop de naam van je favoriete film en sla het bestand op.
+    \item Maak een commit. In de \texttt{1-film}-branch is de gevraagde issue opgelost, maar nog niet in de \texttt{main}-branch.
+    \item In dit geval lost één commit de issue op en kan de contributor meteen een pull request doen.
+\end{itemize}
 
 
- Initialiseer een repository en maak een bestand aan. Voeg wat tekst toe en commit dit bestand. Voeg nog een bestand toe, commit dit ook. Verwijder een bestand en commit de verwijdering. Bekijk de graph van commits en de verschillen tussen de bestanden.
-*Verkenner
-Nieuw map maken
-C:\Projecten\gittest
+\paragraph{Het issue sluiten.} In deze eenvoudige situatie is het probleem meteen opgelost. In praktische situaties zal een reviewer eerst moeten nagaan of de aanpassingen het issue effectief oplossen.
+
+\begin{itemize}
+    \item De reviewer behandelt de pull request en klikt op \texttt{Confirm merge} als de aanpassingen mogen worden overgenomen in de doelbranch en de issue daarmee opgelost is.
+    \begin{itemize}
+        \item Doordat de branch \texttt{1-film} aan de issue is gekoppeld, sluit deze merge de issue automatisch af. De issue is nog terug te vinden bij de \texttt{Closed issues}
+        \item Blijkt de merge toch niet afdoende, dan kan de issue opnieuw worden geopend: \texttt{Github}, \texttt{Issues}, \texttt{Closed}, klik op het onterecht gesloten issue, \texttt{Reopen issue}.
+        \item 
+\end{itemize}
+
+\paragraph{Feature requests.}
+
+Niet elk issue beschrijft een fout. Vaak wordt een issue gebruikt om een nieuwe functie voor te stellen. Zo'n verzoek noemt men een \emph{feature request}.
+
+We maken een tweede issue aan.
+
+\begin{itemize}
+    \item Klik op \texttt{New Issue}.
+    \item Geef als titel:
+    \begin{quote}
+        Voeg bestand contactgegevens.txt toe
+    \end{quote}
+    \item Beschrijf welke informatie het nieuwe bestand moet bevatten.
+    \item Klik op \texttt{Create}.
+\end{itemize}
+
+Dit issue beschrijft geen probleem, maar een uitbreiding van het project.
+
+\paragraph{Een feature request uitvoeren.}
+
+Voer voor deze feature request dezelfde stappen uit als voor het vorige issue.
+
+\begin{itemize}
+    \item Maak een nieuwe branch.
+    \item Voeg het bestand \texttt{contactgegevens.txt} toe.
+    \item Commit de wijziging.
+    \item Push de branch naar GitHub.
+    \item Merge de branch met \texttt{main}.
+    \item Sluit het issue.
+\end{itemize}
+
+\paragraph{Terminologie.}
+
+\begin{itemize}
+    \item \emph{Issue}: een probleem, taak of vraag die moet worden opgevolgd.
+    \item \emph{Bug}: een fout in een programma of document.
+    \item \emph{Feature request}: een voorstel voor nieuwe functionaliteit.
+    \item \emph{Open issue}: een issue waarvoor nog geen oplossing beschikbaar is.
+    \item \emph{Closed issue}: een issue dat werd opgelost of afgewerkt.
+\end{itemize}
+
+In grotere projecten wordt het meeste werk georganiseerd via issues. Nieuwe ideeën, fouten en verbeteringen worden eerst als issue geregistreerd, daarna uitgewerkt op een afzonderlijke branch en ten slotte samengevoegd met de hoofdbranch.
+
+\begin{center}
+Issue $\rightarrow$ Branch $\rightarrow$ Commit $\rightarrow$ Merge $\rightarrow$ Issue sluiten
+\end{center}
 
 
-*VScode
-Source control > Changes: Bestand vermeld
-Source control > Graph: empty
 
-Source control > Changes > Message: Basisgegevens ***dit is de naam van? commit?***
-Source control > Commit + yes ***stage?***
-
-Source control > Graph: Basisgegevens
-
-Typ "Woonplaats: ..."
-File > Save
-
-Source control > Changes > Message: Woonplaats toegevoegd
-Source control > Commit + yes
-
-Source control > Graph: Woonplaats-Basisgegevens
-
-Typ "Quote: ..."
-File > Save
-
-Source control > Changes > Message: Quote toegevoegd
-Source control > Commit + yes
-
-Source control > Graph: Quote toegevoegd-Woonplaats toegevoegd-Basisgegevens
-
-Klik op namen in graph: bevatten allemaal zelfde bestand
-Klik op bestanden: tonen de verschillen met huidige versies
-Rechts in Graph: A (added file) M (modified file)
-
-File > New
-File > Save > C:\Projecten\gittest\stappenplan.txt
-File > New
-File > Save > C:\Projecten\gittest\blabla.txt
-
-Explorer: bestand bestaat
-Source control: bestand nog niet in de graph, enkel bij changes
-
-Source control > Changes > Message: Stappenplan toegevoegd
-Source control > Commit + yes
-
-Source control > Graph: Stappenplan toegevoegd-Quote toegevoegd-Woonplaats toegevoegd-Basisgegevens
-Source control > Graph: commits tonen enkel bestanden die effectief zijn veranderd
-
-*Explorer > blabla.txt > delete
-
-Source control > Changes > Message: Remove blabla.txt
-Source control > Commit + yes
-
-Graph > blabla D (deleted file)
-
-Conclusie:
-- commits tonen tussenstappen in proces.
-- message laat toe om specifieke versie te zoeken.
-- geen info verloren. informatie of bestand weg uit map > zit wel nog in Repository
-
-Publish branch: repository "uploaden" naar github ***push***
-"main" ***is er reden om als single user met meerdere branches te werken*** 
-blauw locatie-icoon en paarse wolkje tonen locatie van lokale repo vs remote repo
-blauwe tree: lokale deel, paarse tree: remote deel (andere kleuren bij complexere bomen)
-
-"sync changes" om verdere aanpassingen te uploaden
-
-Github > Branch > New branch: "branchremote"
-New file > blablaremote
-
-VScode: onderaan sync + branch kiezen
-
-of ***welke methode?***
-
-VSCode: onderaan "main/branch" klikken en nieuwe maken "branchlokaal"
-New file > blablalokaal
-
-***oranje wolk origin/branch???***
-
-Commits: aanpassingen die zonder meer doorgevoerd worden. 1 user tegelijk
-Branch: afzonderlijke versie. aanpassingen kunnen later samengevoegd worden van meerdere users tegelijk
 \end{document}
