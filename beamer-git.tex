@@ -1,0 +1,1625 @@
+\documentclass
+[kulak] % [kulak|kul|kuleuven-brugge,handout|outline|]
+{kulakbeamer}
+
+\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+
+\title{Werken met Git en Github vanuit VSCode}
+\author{Stijn Rebry}
+\date{Academiejaar 2026 -- 2027}
+
+\definecolor{GitOrange}{RGB}{240,80,50}
+\definecolor{GitHubGray}{RGB}{36,41,46}
+\definecolor{VSCodeBlue}{RGB}{0,122,204}
+
+\renewcommand{\outlineTitle}{Overzicht} % enkel met optie outline
+
+\begin{document}
+	
+	\begin{titleframe}
+		\titlepage
+	\end{titleframe}
+
+    \begin{frame}{Inleiding}
+		\begin{itemize}
+            \item \textbf{Versiebeheer}
+            \begin{itemize}
+                \item Informatie bewaren en herstellen
+                \item Samenwerken aan hetzelfde project
+                \item Gestructureerd werken als team
+            \end{itemize} \pause
+			\item \textbf{Git} bundelt in een repository
+            \begin{itemize}
+                \item projectbestanden
+                \item samen met geschiedenis van aanpassingen en
+                \item parallelle versies van het project
+            \end{itemize} 
+			\item \textbf{GitHub} bewaart repositories online
+            \begin{itemize}
+                \item backup van actuele, vorige en parallelle versies
+                \item samenwerking
+            \end{itemize}
+			\item \textbf{VSCode} is de grafische interface van waaruit we Git aansturen.
+		\end{itemize}
+	\end{frame}
+
+	\begin{outlineframe}[Overzicht]
+		\tableofcontents
+	\end{outlineframe}
+	% ======================================================================
+	\section{Local repository, commits}
+	% ======================================================================
+	
+	\begin{frame}{Lokale map maken en openen in VSCode}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{1. Windows Explorer}
+			\begin{itemize}
+				\item Maak map \texttt{C:\textbackslash Projecten}
+				\item Maak submap \texttt{gittest}
+			\end{itemize}
+			\end{block}
+			\begin{block}{2. Visual Studio Code}
+			\begin{itemize}
+				\item Open map \texttt{C:\textbackslash Projecten\textbackslash gittest}
+				\item Maak nieuw bestand \texttt{gegevens.txt}\\
+				% \begin{verbatim}
+                \texttt{Naam: Stijn Rebry}\\
+                \texttt{Opleiding: Wiskunde}
+                % \end{verbatim}
+				\item Sla bestand op
+			\end{itemize}
+            \end{block}
+			
+			\column{0.48\textwidth}
+			\begin{alertblock}{Gebruik lokale map, geen cloudopslag.}
+			\begin{itemize}
+				\item Versieconflicten
+				\item Corrupte bestanden
+				\item Prestatieproblemen
+			\end{itemize}
+		\end{alertblock}
+
+		\begin{exampleblock}{Nuttige sneltoetsen}
+			\begin{itemize}
+				\item New file: \texttt{ctrl+N}
+				\item Save file: \texttt{ctrl+S}
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+	\begin{frame}{Lokaal repository initialiseren en eerste commit}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{3. Source control}
+				\begin{itemize}
+					\item Open \texttt{Source Control}
+					\item Klik \texttt{Trust}
+					\item Klik \texttt{Initialize Repository}
+				\end{itemize}
+			\end{block}
+
+			\begin{block}<2>{4. Source Control, Changes}
+				\begin{itemize}
+					\item Schrijf een commit message
+					\item Klik \texttt{Commit}
+					\item Kies \texttt{Always}
+				\end{itemize}
+			\end{block}
+	
+			\column{0.48\textwidth}
+			\begin{exampleblock}{Changes}
+				\begin{itemize}
+					\item Lijst van aanpassingen:
+					\item \texttt{gegevens.txt A}
+					\item[]
+				\end{itemize}
+			\end{exampleblock}
+
+			\begin{exampleblock}<2>{Graph}
+			\begin{itemize}
+				\item Lijst van commits
+				\item Repository bevat nu één versie
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+	
+\begin{frame}{}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{5. \texttt{gegevens.txt}}
+				\begin{itemize}
+				\item Voeg woonplaats toe, sla op
+				\item Bekijk \texttt{Changes} en \texttt{Graph}
+				\item Maak een nieuwe commit
+				\end{itemize}
+			\end{block}
+
+			\begin{block}<2>{6. Bestanden toevoegen en verwijderen}
+				\begin{itemize}
+				\item Maak \texttt{brol.txt}
+				\item Maak \texttt{bestanden.txt}
+				\item Commit
+				\item Verwijder \texttt{brol.txt}
+				\item Pas \texttt{bestanden.txt} aan
+				\item Commit opnieuw
+				\end{itemize}
+			\end{block}
+	
+			\column{0.48\textwidth}
+			\begin{exampleblock}<2>{Graph}
+				Elke commit toont veranderingen:
+				\begin{itemize}
+					\item \texttt{M} -- Modified file
+					\item \texttt{A} -- Added file
+					\item \texttt{D} -- Deleted file
+				\end{itemize}
+			\end{exampleblock}
+
+			\begin{exampleblock}<2>{Editor}
+			Klik op Modified file:
+				\begin{itemize}
+				\item Toevoegingen (groen)
+				\item Verwijderde tekst (rood)
+				\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+\end{document}
+
+\begin{frame}{}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{}
+				\begin{itemize}
+					\item 
+					\item 
+					\item 
+				\end{itemize}
+			\end{block}
+
+			\begin{block}<2>{}
+				\begin{itemize}
+					\item 
+					\item 
+					\item 
+				\end{itemize}
+			\end{block}
+	
+			\column{0.48\textwidth}
+			\begin{exampleblock}{}
+				\begin{itemize}
+					\item
+					\item
+				\end{itemize}
+			\end{exampleblock}
+
+			\begin{exampleblock}<2>{}
+			\begin{itemize}
+				\item
+				\item
+				\item
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+	
+	\begin{frame}{Terminologie}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Nieuwe begrippen}
+			
+			\begin{itemize}
+				\item Werkmap
+				\item Commit
+				\item Repository
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Betekenis}
+			
+			\begin{itemize}
+				\item Werkmap = huidige bestanden
+				\item Commit = momentopname
+				\item Repository =
+				verzameling van alle commits
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	% ======================================================================
+	\section{Repository publiceren op GitHub}
+	% ======================================================================
+	
+
+	
+\begin{frame}{}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{}
+				\begin{itemize}
+					\item 
+					\item 
+					\item 
+				\end{itemize}
+			\end{block}
+
+			\begin{block}<2>{}
+				\begin{itemize}
+					\item 
+					\item 
+					\item 
+				\end{itemize}
+			\end{block}
+	
+			\column{0.48\textwidth}
+			\begin{exampleblock}{}
+				\begin{itemize}
+					\item
+					\item
+				\end{itemize}
+			\end{exampleblock}
+
+			\begin{exampleblock}<2>{}
+			\begin{itemize}
+				\item
+				\item
+				\item
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+\end{document}
+
+	\begin{frame}{GitHub-account aanmaken}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Studenten}
+			
+			\begin{itemize}
+				\item Surf naar \texttt{github.com}
+				\item Klik \texttt{Sign Up}
+				\item Maak een account aan
+				\item Meld aan
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Opzet en resultaat}
+			
+			GitHub zal de online versie van de repository bewaren.
+			
+			\begin{itemize}
+				\item Voorbereiding op back-up
+				\item Voorbereiding op samenwerking
+				\item Toegang tot online repositories
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{Repository publiceren vanuit VSCode}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Studenten}
+			
+			\begin{itemize}
+				\item Klik \texttt{Publish Branch}
+				\item Kies \texttt{Private Repository}
+				\item Meld aan indien nodig
+				\item Bevestig
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Opzet en resultaat}
+			
+			De lokale repository krijgt een online kopie.
+			
+			\begin{itemize}
+				\item GitHub maakt een repository aan
+				\item Alle bestaande commits worden gepubliceerd
+				\item Lokale en online versie zijn identiek
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{Repository bekijken op GitHub}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Studenten}
+			
+			\begin{itemize}
+				\item Open \texttt{Repositories}
+				\item Open \texttt{gittest}
+				\item Controleer de bestanden
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Opzet en resultaat}
+			
+			Verifiëren dat de publicatie geslaagd is.
+			
+			\begin{itemize}
+				\item \texttt{gegevens.txt} zichtbaar
+				\item \texttt{bestanden.txt} zichtbaar
+				\item Zelfde inhoud als lokaal
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{Nieuwe wijzigingen lokaal toevoegen}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Studenten}
+			
+			\begin{itemize}
+				\item Voeg favoriete kleur toe
+				\item Sla op
+				\item Maak een commit
+				\item Vergelijk lokaal en GitHub
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Opzet en resultaat}
+			
+			Committen is niet hetzelfde als publiceren.
+			
+			\begin{itemize}
+				\item Lokale bestanden zijn aangepast
+				\item Nieuwe commit zichtbaar in Graph
+				\item Wijziging ontbreekt nog op GitHub
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{Push uitvoeren}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Studenten}
+			
+			\begin{itemize}
+				\item Klik \texttt{Sync Changes}
+				\item Vernieuw GitHub
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Opzet en resultaat}
+			
+			Een push stuurt lokale commits naar GitHub.
+			
+			\begin{itemize}
+				\item Favoriete kleur verschijnt online
+				\item Local repository en GitHub zijn opnieuw gelijk
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{Wijzigingen rechtstreeks op GitHub aanbrengen}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Studenten}
+			
+			\begin{itemize}
+				\item Open \texttt{gegevens.txt}
+				\item Klik op het potlood-icoon
+				\item Voeg hobby toe
+				\item Commit de wijziging
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Opzet en resultaat}
+			
+			GitHub kan zelf ook nieuwe commits maken.
+			
+			\begin{itemize}
+				\item Hobby verschijnt online
+				\item Hobby ontbreekt lokaal
+				\item GitHub bevat nu een recentere versie
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{Pull uitvoeren}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Studenten}
+			
+			\begin{itemize}
+				\item Klik \texttt{Sync Changes}
+				\item Controleer het bestand lokaal
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Opzet en resultaat}
+			
+			Een pull haalt commits van GitHub op.
+			
+			\begin{itemize}
+				\item Hobby verschijnt lokaal
+				\item Laatste online commit wordt opgehaald
+				\item Beide repositories zijn opnieuw identiek
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{Terminologie}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\textbf{Nieuwe begrippen}
+			
+			\begin{itemize}
+				\item Local repository
+				\item Remote repository
+				\item Push
+				\item Pull
+			\end{itemize}
+			
+			\column{0.48\textwidth}
+			\textbf{Betekenis}
+			
+			\begin{itemize}
+				\item Lokaal = eigen computer
+				\item Remote = GitHub
+				\item Push = lokaal \(\rightarrow\) GitHub
+				\item Pull = GitHub \(\rightarrow\) lokaal
+			\end{itemize}
+		\end{columns}
+	\end{frame}	
+	
+	\section{Werken met branches}
+	
+\begin{frame}{Werken met branches}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		\textcolor{VSCodeBlue}{\textbf{Situatie}}
+		
+		Tot nu toe:
+		
+		\begin{itemize}
+			\item één repository
+			\item één branch
+			\item alle commits op \texttt{main}
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		\textcolor{GitOrange}{\textbf{Waarom branches?}}
+		
+		\begin{itemize}
+			\item wijzigingen uitproberen
+			\item experimenteren
+			\item samenwerken
+			\item stabiele versie bewaren
+		\end{itemize}
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Belangrijk}}
+		
+		Een branch is een alternatieve versie van dezelfde repository.
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{De huidige branch bekijken}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Kijk linksonder in VSCode.
+			\item Zoek de branchnaam.
+			\item Controleer dat deze \texttt{main} is.
+			\item Verifieer dezelfde branch op GitHub.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Elke commit behoort tot een branch.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item actieve branch = \texttt{main}
+			\item lokale en remote branch zijn identiek
+			\item alle commits staan momenteel op \texttt{main}
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}{Een nieuwe branch maken}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Klik op \texttt{main}.
+			\item Kies \texttt{Create New Branch}.
+			\item Geef naam \texttt{vakken}.
+			\item Wissel tussen \texttt{main} en \texttt{vakken}.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Een branch vertrekt vanuit een bestaande versie van het project.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item branch \texttt{vakken} bestaat lokaal
+			\item branch bevat dezelfde bestanden als \texttt{main}
+			\item nog niet zichtbaar op GitHub
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Wijziging maken op een branch}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Selecteer branch \texttt{woonplaatsen}.
+			\item Maak \texttt{woonplaatsen.txt}.
+			\item Voeg inhoud toe.
+			\item Commit.
+			\item Toon alle branches in de Graph.
+			\item Wissel tussen branches.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Branches kunnen onafhankelijk evolueren.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item nieuwe file enkel zichtbaar in \texttt{woonplaatsen}
+			\item Graph splitst op in meerdere kleuren
+			\item elke branch heeft eigen commits
+			\item andere branch blijft ongewijzigd
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Een branch maken op GitHub}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Maak branch \texttt{vakken} op GitHub.
+			\item Maak bestand \texttt{vakken.txt}.
+			\item Voeg inhoud toe.
+			\item Commit rechtstreeks op GitHub.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Niet alle branches ontstaan lokaal.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item branch \texttt{vakken} bestaat enkel online
+			\item lokaal kent Git deze branch nog niet
+			\item repositories bevatten verschillende informatie
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Fetch -- online informatie ophalen}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Bekijk de gekende branches.
+			\item Klik \texttt{Fetch From All Remotes}.
+			\item Bekijk opnieuw de branchlijst.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Git controleert welke branches en commits online bestaan.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item \texttt{origin/vakken} wordt zichtbaar
+			\item geen bestanden gewijzigd
+			\item geen commits opgehaald
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Pull -- een branch ophalen}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Kies \texttt{Create New Local Branch From}.
+			\item Selecteer \texttt{origin/vakken}.
+			\item Maak lokale branch \texttt{vakken}.
+			\item Schakel naar deze branch.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		De branch bestond tot nu toe uitsluitend online.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item lokale branch \texttt{vakken}
+			\item bestand \texttt{vakken.txt} verschijnt
+			\item branch kan lokaal gebruikt worden
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Push -- branch publiceren}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Schakel naar \texttt{woonplaats}.
+			\item Kies \texttt{Publish Branch}.
+			\item Controleer GitHub.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Een lokale branch kan gedeeld worden via GitHub.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item drie branches zichtbaar op GitHub
+			\item lokale en remote branch gesynchroniseerd
+			\item cloudlabels verschijnen in Graph
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}{Terminologie}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Nieuwe begrippen}}
+		
+		\begin{itemize}
+			\item Branch
+			\item Main
+			\item Fetch
+			\item Pull
+			\item Push
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitHubGray}{\textbf{Samenvatting}}
+		
+		\begin{itemize}
+			\item Branch = alternatieve versie
+			\item Main = stabiele hoofdbranch
+			\item Fetch = online informatie bekijken
+			\item Pull = wijzigingen ophalen
+			\item Push = wijzigingen publiceren
+		\end{itemize}
+		
+		\medskip
+		
+		\textcolor{GitOrange}{\textbf{Volgende stap}}
+		
+		Branches opnieuw samenvoegen via merge.
+		
+	\end{columns}
+	
+\end{frame}
+
+\section{Mergen van branches}
+
+\begin{frame}{Samenvoegen van branches}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Situatie}}
+		
+		Momenteel bestaan meerdere branches:
+		
+		\begin{itemize}
+			\item \texttt{main}
+			\item \texttt{woonplaats}
+			\item \texttt{vakken}
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom mergen?}}
+		
+		Branches laten onafhankelijk werk toe.
+		
+		Uiteindelijk moeten de wijzigingen opnieuw worden samengebracht.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Soorten merges}}
+		
+		\begin{itemize}
+			\item nieuwe bestanden
+			\item verschillende wijzigingen
+			\item conflicterende wijzigingen
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Lokale merge van nieuwe bestanden}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Schakel naar \texttt{main}.
+			\item Open Command Palette.
+			\item Kies \texttt{Git: Merge}.
+			\item Selecteer branch \texttt{woonplaats}.
+			\item Push daarna naar GitHub.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		De branch bevat een bestand dat ontbreekt in \texttt{main}.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item \texttt{woonplaatsen.txt} verschijnt
+			\item merge commit op \texttt{main}
+			\item lokale merge zichtbaar in Graph
+			\item na push ook zichtbaar op GitHub
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+Remote merge van nieuwe bestanden
+\begin{frame}{Remote merge via Pull Request}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Open Pull Requests.
+			\item Maak een nieuwe Pull Request.
+			\item Kies:
+			\begin{itemize}
+				\item base = \texttt{main}
+				\item compare = \texttt{vakken}
+			\end{itemize}
+			\item Create Pull Request.
+			\item Merge Pull Request.
+			\item Fetch en Pull in VSCode.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Een contributor stelt wijzigingen voor.
+		
+		Een reviewer beslist of deze worden overgenomen.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item branch \texttt{vakken} geïntegreerd
+			\item merge eerst op GitHub
+			\item lokale repository loopt achter
+			\item Fetch + Pull synchroniseren opnieuw
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}{Contributor en reviewer}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Contributor}}
+		
+		\begin{itemize}
+			\item werkt op eigen branch
+			\item maakt commits
+			\item opent Pull Request
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitHubGray}{\textbf{Reviewer}}
+		
+		\begin{itemize}
+			\item bekijkt wijzigingen
+			\item controleert commits
+			\item beslist over merge
+		\end{itemize}
+		
+		\medskip
+		
+		\textcolor{GitOrange}{\textbf{Workflow}}
+		
+		\begin{center}
+			
+			Branch
+			
+			\(\downarrow\)
+			
+			Pull Request
+			
+			\(\downarrow\)
+			
+			Review
+			
+			\(\downarrow\)
+			
+			Merge
+			
+		\end{center}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Merge zonder conflicten}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Maak branch \texttt{programmeertaal}.
+			\item Voeg favoriete taal toe.
+			\item Commit.
+			\item Voeg in \texttt{main} studentnummer toe.
+			\item Commit.
+			\item Merge beide branches.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom lukt dit?}}
+		
+		De wijzigingen gebeuren op verschillende plaatsen.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item studentnummer aanwezig
+			\item programmeertaal aanwezig
+			\item Git combineert automatisch
+			\item geen menselijke tussenkomst nodig
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Automatisch combineren}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Situatie}}
+		
+		Branch A:
+		
+		\begin{itemize}
+			\item nieuwe lijn bovenaan
+		\end{itemize}
+		
+		Branch B:
+		
+		\begin{itemize}
+			\item nieuwe lijn onderaan
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Analyse}}
+		
+		Git vergelijkt:
+		
+		\begin{itemize}
+			\item bronbranch
+			\item doelbranch
+			\item gemeenschappelijke voorouder
+		\end{itemize}
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Gevolg}}
+		
+		Git weet dat beide wijzigingen kunnen samen bestaan.
+		
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}{Een merge met conflict}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Maak branch \texttt{conflict}.
+			\item Verander woonplaats naar
+			\texttt{Minas Tirith}.
+			\item Commit.
+			\item Verander in \texttt{main}
+			woonplaats naar
+			\texttt{Camelot}.
+			\item Commit.
+			\item Merge.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Probleem}}
+		
+		Dezelfde lijn werd twee keer aangepast.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		Git weet niet welke versie juist is.
+		
+		Het mergeproces stopt.
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Conflict oplossen}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Bekijk conflict in editor.
+			\item Kies:
+			\begin{itemize}
+				\item Current
+				\item Incoming
+				\item Both
+			\end{itemize}
+			\item Stage wijziging.
+			\item Commit.
+			\item Push.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Git kan de inhoud niet zelf kiezen.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item conflict opgelost
+			\item merge voltooid
+			\item repository opnieuw consistent
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{Terminologie}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Nieuwe begrippen}}
+		
+		\begin{itemize}
+			\item Merge commit
+			\item Bronbranch
+			\item Doelbranch
+			\item Pull Request
+			\item Contributor
+			\item Reviewer
+			\item Merge conflict
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitHubGray}{\textbf{Samenvatting}}
+		
+		\begin{itemize}
+			\item wijzigingen samenbrengen
+			\item lokaal of via GitHub
+			\item automatische merge indien mogelijk
+			\item menselijke beslissing bij conflict
+		\end{itemize}
+		
+		\medskip
+		
+		\textcolor{GitOrange}{\textbf{Volgende stap}}
+		
+		Werk organiseren met Issues en Assignees.
+		
+	\end{columns}
+	
+\end{frame}
+
+
+% ======================================================================
+\section{Werkverdeling: issues en assignees}
+% ======================================================================
+
+\begin{frame}{Issues en assignees}
+	\begin{columns}[T]
+		\column{0.48\textwidth}
+		\textbf{Nieuwe mogelijkheden}
+		
+		\begin{itemize}
+			\item Issues
+			\item Feature requests
+			\item Assignees
+			\item Taakverdeling
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		\textbf{Waarom?}
+		
+		Bij grotere projecten werken verschillende personen tegelijk.
+		
+		\begin{itemize}
+			\item Taken opsplitsen
+			\item Verantwoordelijkheden vastleggen
+			\item Voorkomen dat meerdere personen
+			hetzelfde probleem oplossen
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Een issue en branch aanmaken}
+	\begin{columns}[T]
+		\column{0.48\textwidth}
+		\textbf{Studenten}
+		
+		\begin{itemize}
+			\item Open \texttt{Issues}
+			\item Klik \texttt{New Issue}
+			\item Maak issue \texttt{1-film}
+			\item Open het issue
+			\item Klik \texttt{Create branch}
+			\item Maak branch \texttt{1-film}
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		\textbf{Opzet en resultaat}
+		
+		Een taak wordt expliciet geregistreerd.
+		
+		\begin{itemize}
+			\item Openstaand issue verschijnt
+			\item Nieuwe branch gekoppeld aan issue
+			\item Voorbereiding op taakuitvoering
+			\item Branch bestaat voorlopig enkel op GitHub
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Een assignee toekennen}
+	\begin{columns}[T]
+		\column{0.48\textwidth}
+		\textbf{Studenten}
+		
+		\begin{itemize}
+			\item Open het issue
+			\item Klik op \texttt{Assignees}
+			\item Selecteer één of meer contributors
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		\textbf{Opzet en resultaat}
+		
+		Verantwoordelijkheden worden toegewezen.
+		
+		\begin{itemize}
+			\item Zichtbaar wie een taak uitvoert
+			\item Filters per contributor mogelijk
+			\item Overzicht van openstaande taken
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{De wijziging uitvoeren}
+	\begin{columns}[T]
+		\column{0.48\textwidth}
+		\textbf{Studenten}
+		
+		\begin{itemize}
+			\item Open branch \texttt{1-film}
+			\item Pas \texttt{gegevens.txt} aan
+			\item Voeg favoriete film toe
+			\item Maak een commit
+			\item Maak een pull request
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		\textbf{Opzet en resultaat}
+		
+		De contributor werkt het issue uit.
+		
+		\begin{itemize}
+			\item Probleem opgelost in de issue-branch
+			\item Hoofdbranch nog ongewijzigd
+			\item Wijzigingen klaar voor review
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Het issue sluiten}
+	\begin{columns}[T]
+		\column{0.48\textwidth}
+		\textbf{Studenten}
+		
+		\begin{itemize}
+			\item Reviewer behandelt de pull request
+			\item Merge uitvoeren
+			\item Eventueel issue heropenen
+			\item Eventueel issue manueel sluiten
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		\textbf{Opzet en resultaat}
+		
+		Controleren of de taak echt opgelost is.
+		
+		\begin{itemize}
+			\item Branch wordt gemerged
+			\item Issue verhuist naar
+			\texttt{Closed Issues}
+			\item Historiek van oplossingen blijft bewaard
+			\item Heropenen blijft mogelijk
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Terminologie}
+	\begin{columns}[T]
+		\column{0.48\textwidth}
+		\textbf{Nieuwe begrippen}
+		
+		\begin{itemize}
+			\item Issue
+			\item Bug
+			\item Feature request
+			\item Assignee
+			\item Open issue
+			\item Closed issue
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		\textbf{Betekenis}
+		
+		\begin{itemize}
+			\item Issue = taak of probleem
+			\item Bug = fout
+			\item Feature request = nieuwe functie
+			\item Assignee = verantwoordelijke
+			\item Open = nog uit te voeren
+			\item Closed = afgewerkt
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Workflow met issues}
+	\centering
+	
+	\Large
+	
+	Issue
+	
+	\vspace{0.4cm}
+	
+	\(\Downarrow\)
+	
+	\vspace{0.4cm}
+	
+	Branch
+	
+	\vspace{0.4cm}
+	
+	\(\Downarrow\)
+	
+	\vspace{0.4cm}
+	
+	Commit(s)
+	
+	\vspace{0.4cm}
+	
+	\(\Downarrow\)
+	
+	\vspace{0.4cm}
+	
+	Pull Request
+	
+	\vspace{0.4cm}
+	
+	\(\Downarrow\)
+	
+	\vspace{0.4cm}
+	
+	Merge
+	
+	\vspace{0.4cm}
+	
+	\(\Downarrow\)
+	
+	\vspace{0.4cm}
+	
+	Issue sluiten
+	
+\end{frame}
+
+\section{De teamopdracht, repository en workflows}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{De teamopdracht: overzicht}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat gebeurt er?}}
+		
+		\begin{itemize}
+			\item Iedereen werkt in dezelfde teamrepository.
+			\item Taken worden verdeeld.
+			\item Werk wordt via branches samengebracht.
+			\item De teamleider bewaakt de hoofdbranch.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Versiebeheer wordt pas echt nuttig wanneer meerdere personen samenwerken.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Doel}}
+		
+		\begin{itemize}
+			\item geen bestanden verloren
+			\item geen overschreven werk
+			\item duidelijke taakverdeling
+			\item controleerbare geschiedenis
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Team repository}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Word lid van repository \texttt{mainX}.
+			\item Clone de repository.
+			\item Werk vanuit VSCode.
+			\item Gebruik branches voor nieuwe bijdragen.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		De teamrepository vormt de centrale plaats waar alle resultaten samenkomen.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item alle teamleden werken op dezelfde basis
+			\item gedeelde geschiedenis
+			\item centrale opslag op GitHub
+			\item teamleider beheert integratie
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}{Vergaderverslagen}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Werk in branch
+			\texttt{0-vergaderingenX}.
+			\item Verslaggever schrijft verslag.
+			\item Dien een Pull Request in.
+			\item Teamleider merge na goedkeuring.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Een verslag is pas definitief wanneer het volledige team akkoord gaat.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item conceptversies gescheiden van hoofdbranch
+			\item eenvoudige feedback
+			\item duidelijke historiek van beslissingen
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+Wekelijkse branches
+\begin{frame}{Wekelijkse branches}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Werk telkens in de branch van de week.
+			\item Voorbeelden:
+			\begin{itemize}
+				\item \texttt{oefeningenX}
+				\item \texttt{implementatieX}
+				\item \texttt{verslagX}
+				\item \texttt{posterX}
+			\end{itemize}
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Elke deeltaak krijgt een eigen ontwikkelomgeving.
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item minder conflicten
+			\item duidelijk overzicht
+			\item deelresultaten kunnen afzonderlijk groeien
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}{Issues voor alle deeltaken}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Maak voor elke taak een issue.
+			\item Ken een assignee toe.
+			\item Werk aan één issue tegelijk.
+			\item Gebruik sub-issues indien nodig.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Waarom?}}
+		
+		Issues maken zichtbaar:
+		
+		\begin{itemize}
+			\item wat nog moet gebeuren;
+			\item wie waaraan werkt;
+			\item welke taken voltooid zijn.
+		\end{itemize}
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item duidelijke taakverdeling
+			\item minder dubbel werk
+			\item beter projectoverzicht
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+\begin{frame}{Commit, push en merge}
+	
+	\begin{columns}[T]
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{VSCodeBlue}{\textbf{Wat doen we?}}
+		
+		\begin{itemize}
+			\item Commit regelmatig.
+			\item Push afgewerkt werk.
+			\item Meld problemen via issues.
+			\item Gebruik Pull Requests.
+			\item Merge pas na controle.
+		\end{itemize}
+		
+		\column{0.48\textwidth}
+		
+		\textcolor{GitOrange}{\textbf{Goede praktijk}}
+		
+		\begin{itemize}
+			\item één deelprobleem tegelijk
+			\item duidelijke commit messages
+			\item niet uren lokaal werken
+			\item tijdig synchroniseren
+		\end{itemize}
+		
+		\medskip
+		
+		\textcolor{GitHubGray}{\textbf{Resultaat}}
+		
+		\begin{itemize}
+			\item werk gaat niet verloren
+			\item teamgenoten zien voortgang
+			\item begeleiding kan opvolgen
+			\item eindproduct groeit gecontroleerd
+		\end{itemize}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+\end{document}
