@@ -117,7 +117,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\subsection{Eerste commit} Nu kunnen we een toevoegen van het eerste bestand aan de repository doorvoeren. 
 	\begin{itemize}
 		\item Tik in het vak \texttt{Message} onder \texttt{Changes} een beschrijving van de aanpassingen, in dit geval bijvoorbeeld ``Initiële inhoud''.
-		\item Klik op \texttt{Commit}, en kies voor \texttt{Always} bij de pop-up vraag over \texttt{Changes}\footnote{Hierdoor voegt \vscode\ elke wijziging automatisch toe aan de commit. In sectie \ref{ssec:stage} wordt uitgelegd hoe en waarom je de afzonderlijke \texttt{stage}-stap gebruikt.}.
+		\item Klik op \texttt{Commit}, en kies voor \texttt{Always} bij de pop-up vraag over \texttt{Changes}\footnote{Hierdoor voegt \vscode\ elke wijziging automatisch toe aan de commit. In sectie \ref{ssec:stage} wordt uitgelegd hoe en waarom je de afzonderlijke "stage"-stap gebruikt.}.
 		\begin{itemize}
 			\item De \texttt{gegevens.txt} verschijnt in het \texttt{Graph}-overzicht, onder de beschrijving van de commit, met daarnaast de letter \texttt{A} (added file).
 		\end{itemize}
@@ -384,7 +384,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item Klik naast \texttt{Graph} op de knop \texttt{Pull}.
 		\begin{itemize}
 			\item In \texttt{Explorer} zijn nu alle bestanden samengebracht in de \texttt{main}-branch.
-			\item In de \texttt{Graph} bevinden \texttt{main} en \texttt{origin/main} zich opnieuw op dezelfde commit.
+			\item In de \texttt{Graph} bevinden \texttt{main} en \texttt{origin/main} zich opnieuw op dezelfde commit.\footnote{verder werken met merged branches: feature branches vs langlevende branches}
 		\end{itemize}
 	\end{itemize}
 	
@@ -512,22 +512,6 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	
 	Om het overzicht te bewaren is het aangewezen dat de issues niet allemaal tegelijk worden verdeeld over de teamleden, maar dat elk teamlid maar één issues markeert waar die op dat moment effectief mee bezig is. Het plan van wie wat zal aanpakken, komt natuurlijk wel in het wekelijkse vergaderverslag.
 	
-\subsection{Feature branches en langlevende branches}
-
-Er blijkt dus dat er in de teamopdracht, net zoals in het merendeel van de \git-repositories, twee soorten branches zullen worden gebruikt. In de voorbeelden van de eerste secties van deze tekst, werden branches gebruikt om een beperkte wijziging uit te werken. Nadat de wijziging was gemerged met de hoofdbranch, had de branch haar doel bereikt. Dergelijke branches noemt men \emph{feature branches}. Na de merge wordt een feature branch vaak verwijderd omdat alle wijzigingen ondertussen in de hoofdbranch aanwezig zijn. Voorbeelden in de teamopdracht zijn\ldots
-\begin{itemize}
-\item \texttt{oefening1}
-\item \texttt{bug-python-script}
-\item \texttt{spellingscontrole-hoofdstuk5}
-\end{itemize}
-
-Niet alle branches zijn echter tijdelijk. Sommige projecten gebruiken meerdere branches die permanent blijven bestaan en elk een eigen rol hebben. Men spreekt dan van \emph{langlevende branches}. Voorbeelden hiervan in de context van de teamopdracht zijn
-\begin{itemize}
-\item \texttt{teamX-main}
-\item \texttt{teamX-0-vergaderingen}
-\item \texttt{teamX-0-oefeingen}
-\end{itemize}
-
 	\subsection{Commit, push en merge}
 	
 	Tracht gestructureerd te werken, één deelprobleempje tegelijk, en voer snel genoeg een commit uit. Die documenteert dan achteraf wat er al is gebeurd.
@@ -551,7 +535,7 @@ Door \git\ en \github\ consequent te gebruiken ontstaan verschillende voordelen.
 
 \section{Appendix}
 
-\subsection{Stage -- selecteren van aanpassingen voor commit}
+\subsection{Stage}
 \label{ssec:stage}
 In sectie \ref{sec:local} werd een stap overgeslagen bij het committen. In een realistische workflow komt tussen opslaan en committen van aanpassingen nog het stagen. Niet alle wijzigingen die tegelijk in de werkmap aanwezig zijn, horen immers noodzakelijk in dezelfde commit thuis. Bekijk volgend voorbeeld: bij het schrijven van het eindverslag wordt figuur gemaakt en geïnterpreteerd in de tekst.
 \begin{itemize}
@@ -569,50 +553,13 @@ Hiervoor gebruikt \git\ de stage, wat leidt tot de volgende meer geavanceerde wo
 	\item \emph{Commit}: permanente opname in de repository van alle wijzigingen die in de stage zijn geplaatst.
 \end{itemize}
 
-\subsection{Clone -- een bestaande repository ophalen}
+\subsection{\github\ Organisations}
 
-Tot nu toe hebben we telkens zelf een repository aangemaakt. In de praktijk zal je echter vaak starten van een bestaande repository die zich al op GitHub bevindt. Het lokaal kopiëren van zo'n repository heet \emph{clonen}.
+\github, Project, Kanban
 
-\begin{itemize}
-    \item Open de repository \texttt{gittest} op GitHub.
-    \item Klik op de groene knop \texttt{Code}.
-    \item Kopieer de HTTPS-link van de repository.
-    \item Maak in \texttt{C:\textbackslash Projecten} een nieuwe map \texttt{gittest-clone}.
-    \item Open een nieuw venster van \vscode.
-    \item Open het \texttt{Command Palette} (\texttt{ctrl+shift+P}).
-    \item Kies \texttt{Git: Clone}.
-    \item Plak de gekopieerde URL.
-    \item Kies \texttt{C:\textbackslash Projecten} als doelmap.
-    \item Open de zojuist gekloonde repository.
-    \begin{itemize}
-    \item Alle bestanden uit de repository verschijnen  in \texttt{Explorer}.
-    \item Ook de volledige geschiedenis van commits en branches wordt mee gekopieerd.
-    \item De \texttt{Graph} toont dezelfde geschiedenis als in de oorspronkelijke repository.
-    \item Wijzigingen die later op GitHub worden gemaakt, kunnen met \texttt{Pull} worden opgehaald.
-\end{itemize}
-\end{itemize}
 
-Een clone is dus veel meer dan een gewone kopie van de bestanden. Ook de volledige repositorygeschiedenis wordt lokaal beschikbaar gemaakt.
+\subsection{\github\ Projects}
 
-\subsection{Forks -- kopie van een repository van een andere eigenaar}
-
-Tot nu toe werkten alle contributors rechtstreeks in dezelfde repository. Dat is mogelijk omdat iedereen schrijfrechten heeft gekregen op die repository. In veel open-sourceprojecten is dat echter niet het geval. Externe bijdragers mogen de repository bekijken en kopiëren, maar kunnen niet rechtstreeks naar de hoofdrepository pushen.
-
-Daarvoor gebruikt GitHub zogenaamde \emph{forks}. Een fork is een volledige kopie van een repository in een andere GitHub-account. De eigenaar van de originele repository behoudt de controle over de hoofdversie, terwijl de eigenaar van de fork vrij kan experimenteren in de eigen kopie.
-
-\begin{itemize}
-    \item Open de repository op GitHub.
-    \item Klik rechtsboven op \texttt{Fork}.
-    \item Kies je eigen GitHub-account als bestemming.
-    \item Bevestig.
-    \begin{itemize}
-    \item In je eigen account verschijnt nu een nieuwe repository.
-    \item Alle bestanden, branches en commits werden gekopieerd.
-    \item De nieuwe repository (fork) blijft verwijzen naar de oorspronkelijke repository (upstream repository). Net zoals bij een branch, kan er een pull request worden gestuurd naar Net zoals bij een branch kunnen wijzigingen via een \emph{pull request} worden voorgesteld aan de upstream repository.
-\end{itemize}
-\end{itemize}
-
-Branches en forks lijken dus op elkaar: een branch is een alternatieve versie binnen dezelfde repository (met dezelfde eigenaar), terwijl een fork een volledige kopie van een repository is, typisch voor een gebruiker die geen schrijfrechten heeft de originele repository.
-
+\github, Project, Kanban
 
 \end{document}
