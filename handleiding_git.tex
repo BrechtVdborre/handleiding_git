@@ -449,9 +449,9 @@ Verbeterde versie
 
 Hierboven werd een repository lokaal aangemaakt en vervolgens naar \github\ gepubliceerd. In de praktijk zal je echter vaak starten van een bestaande repository die zich al op GitHub bevindt.
 
-\subsection{Fork -- kopie van een repository van een andere eigenaar}
+\subsection{Fork -- kopie van een repository van een andere eigenaar}\label{ssec:fork}
 
-Zelfs wanneer een repository op \github\ publiek beschikbaar is, kan een gebruiker die geen expliciete schrijfrechten heeft gekregen, de repository enkel bekijken en kopiëren, maar niet rechtstreeks committen of wijzigingen mergen in de oorspronkelijke repository.
+Zelfs wanneer een repository op \github\ publiek beschikbaar is, kan een gebruiker die geen expliciete schrijfrechten heeft gekregen, de repository enkel bekijken en kopiëren, maar niet rechtstreeks committen of wijzigingen mergen.
 
 Om toch aan zo'n repository te kunnen bijdragen, gebruikt GitHub zogenaamde \emph{forks}. Een fork is een volledige kopie van een repository in een andere GitHub-account. De eigenaar van de oorspronkelijke repository behoudt de controle over de hoofdversie, terwijl de eigenaar van de fork vrij kan experimenteren in de eigen kopie.
 
@@ -460,30 +460,30 @@ Als voorbeeld maakt elk team een fork van de repository die we voor de teamopdra
 \begin{itemize}
     \item Open de repository \href{https://github.com/srebrykulak/TeamopdrachtX}{github.com/srebrykulak/TeamopdrachtX}.
     \item Klik rechtsboven op \texttt{Fork}.
-    \item Kies je eigen GitHub-account als bestemming en gebruik als naam voor de repository niet de letter \texttt{X}, maar de eigen teamletter.
+    \item Kies je eigen \gitHub-account als bestemming en gebruik als naam voor de repository niet de letter \texttt{X}, maar de eigen teamletter.
     \item Bevestig.
     \begin{itemize}
         \item In je eigen account verschijnt nu de nieuwe repository.
         \item Alle bestanden, branches en commits werden gekopieerd.
         \begin{itemize}
-            \item De nieuwe repository, de \emph{fork}, blijft verwijzen naar de oorspronkelijke repository, die de \emph{upstream repository} wordt genoemd.
+            \item De nieuwe repository, de \emph{fork}, blijft verwijzen naar de bron, de zogenaamde \emph{upstream repository}.
             \item Net zoals bij een branch kunnen wijzigingen via een \emph{pull request} worden voorgesteld aan de upstream repository.
             \item Nieuwe commits in de upstream repository kunnen worden overgenomen door in \github\ te klikken op \texttt{Sync fork}, \texttt{Update branch}.
         \end{itemize}
     \end{itemize}
 \end{itemize}
 
-Branches en forks lijken dus op elkaar: een branch is een alternatieve versie binnen dezelfde repository (met dezelfde eigenaar), terwijl een fork een volledige kopie van een repository is, typisch bedoeld voor een gebruiker die geen schrijfrechten heeft op de oorspronkelijke repository.
+Branches en forks lijken dus op elkaar: een branch is een alternatieve versie binnen dezelfde repository met dezelfde eigenaar. Een fork is een volledige kopie van een repository, typisch bedoeld voor een gebruiker die geen schrijfrechten heeft op de oorspronkelijke repository.
 
-\subsection{Clone -- een bestaande repository ophalen}
+\subsection{Clone -- een online repository ophalen}
 
-Het lokaal kopiëren van een repository heet \emph{clonen}.
+Het lokaal kopiëren van een online repository heet \emph{clonen}.
 
 \begin{itemize}
     \item Open de fork die zonet voor jullie team is gemaakt op \github.
     \item Klik op de groene knop \texttt{Code}.
     \item Kopieer de HTTPS-link van de repository.
-    \item Maak in \texttt{C:\textbackslash Projecten} eventueel een nieuwe map \texttt{TeamopdrachtX} (met de juiste teamletter in plaats van \texttt{X}).
+    \item Maak in \texttt{C:\textbackslash Projecten} een nieuwe map \texttt{TeamopdrachtX}, met de juiste teamletter in plaats van \texttt{X}.
     \item Open een nieuw venster van \vscode.
     \item Open het \texttt{Command Palette} (\texttt{Ctrl+Shift+P}).
     \item Kies \texttt{Git: Clone}.
@@ -493,7 +493,7 @@ Het lokaal kopiëren van een repository heet \emph{clonen}.
     \begin{itemize}
         \item Alle bestanden uit de repository verschijnen in \texttt{Explorer}.
         \item De volledige geschiedenis van commits en branches wordt mee gekopieerd en getoond in de \texttt{Graph}.
-        \item Wijzigingen kunnen tussen de  clone en de origin worden uitgewisseld met \texttt{Push} en \texttt{Pull}.
+        \item Wijzigingen kunnen tussen de clone en de origin worden uitgewisseld met \texttt{Push} en \texttt{Pull}.
     \end{itemize}
 \end{itemize}
 
@@ -514,17 +514,17 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
 	
 	Tot nu toe hebben we wijzigingen rechtstreeks uitgevoerd op bestanden. Bij grotere projecten is het echter nuttig om eerst vast te leggen \emph{wat} er moet gebeuren. Daarvoor gebruikt \github\ \emph{issues}. Deze beschrijven een taak die nog moet worden uitgevoerd, een nieuwe functie die moet worden toegevoegd of een fout die moet worden opgelost. Om er voor te zorgen dat niet iedereen hetzelfde probleem aan het oplossen is, kunnen issues toegekend worden aan een specifieke contributor, de \emph{assignee}.
 	
-	\subsection{Een issue en branch aanmaken}  We zullen een eerste issue aanmaken voor onze repository. Zoals steeds worden wijzigingen niet rechtstreeks op \texttt{main} uitgevoerd, maar in een nieuwe branch die specifiek aan het issue gekoppeld is. In de praktijk worden de taken in deze workflow over twee personen verdeeld, de reviewer en een contributor.
+	\subsection{Een issue en branch aanmaken}  We zullen een eerste issue aanmaken voor onze repository. Zoals steeds worden wijzigingen niet rechtstreeks op \texttt{main} uitgevoerd, maar in een nieuwe branch die specifiek aan de issue gekoppeld is. In de praktijk worden de taken in deze workflow over twee personen verdeeld, de reviewer en een contributor.
 	
 	\begin{itemize}
-		\item[] De reviewer wil dat een contributor aan het bestand \texttt{gegevens.txt} de naam van de favoriete film toevoegt.
+		\item[] De reviewer wil dat een contributor aan het bestand \texttt{gegevens.txt} de naam van de favoriete film toevoegt en voert volgende stappen uit.
 		\item Open de repository op \github\ en klik bovenaan op \texttt{Issues}.
 		\item Klik op \texttt{New Issue} en geef een titel (\texttt{1-film}) en beschrijving aan de issue.
 		\item Klik op \texttt{Create}.
 		\begin{itemize}
-			\item Het issue verschijnt nu in de lijst met openstaande issues.
+			\item De issue verschijnt nu in de lijst met openstaande issues.
 		\end{itemize}
-		\item Open het issue dat net is aangemaakt.
+		\item Open de issue dat net is aangemaakt.
 		\item Klik op de tekst \texttt{Create branch} in de rechter kolom onder \texttt{Development}.
 		\item Geef een duidelijke branchnaam \texttt{1-film} die issue-nummer en omschrijving omvat.
 		\begin{itemize}
@@ -536,7 +536,7 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
 	\subsection{Een assignee toekennen} Een issue kan aan één of meerdere personen worden toegewezen.
 	
 	\begin{itemize}
-		\item Open het zonet aangemaakte issue.
+		\item Open opnieuw het zonet aangemaakte issue.
 		\item Klik op het tandwiel naast \texttt{Assignees} in de rechter kolom.
 		\item Selecteer een of meerdere contributors van de repository (voorlopig is dat enkel jijzelf).
 		\begin{itemize}
@@ -552,11 +552,11 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
 		\item[] De contributor die de issue zal opvolgen, voert volgende stappen uit.
 		\item Open op \github\ in de branch \texttt{1-film} het bestand \texttt{gegevens.txt}. Voeg een nieuwe lijn toe met daarop de naam van je favoriete film en sla het bestand op.
 		\item Maak een commit. In de \texttt{1-film}-branch is de gevraagde issue opgelost, maar nog niet in de \texttt{main}-branch.
-		\item In dit geval lost één commit de issue op en kan de contributor meteen een pull request doen.
+		\item In dit geval lost één commit de issue op, de contributor doet een pull request.
 	\end{itemize}
 	
 	
-	\subsection{Het issue sluiten} In deze eenvoudige situatie is het probleem meteen opgelost. In praktische situaties zal een reviewer eerst moeten nagaan of de aanpassingen het issue effectief oplossen.
+	\subsection{De issue sluiten} In de volgende stap,  zal de reviewer moeten nagaan of de aanpassingen de issue effectief oplossen.
 	
 	\begin{itemize}
 		\item De reviewer behandelt de pull request en klikt op \texttt{Confirm merge} als de aanpassingen mogen worden overgenomen in de doelbranch en de issue daarmee opgelost is.
@@ -580,32 +580,35 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
 	\section{De teamopdacht, repository en workflows}
 	\label{sec:teamopdracht}
 	
-	\subsection{Team repository} Voor de teamopdracht worden alle studenten uitgenodigd door de staf naar een een team-repository (\texttt{mainX}) met \texttt{X} de letter het team. De teamleider zal de verantwoordelijkheid hebben om alle eindproducten (opgeloste oefeningen, Python-scripts, eindverslag en poster, \ldots) aan deze repository toe te voegen door verschillende branches te mergen.
+	\subsection{Team repository} Elk team werkt in een fork van de repository \texttt{teamopdrachtX} met \texttt{X} de letter het team. De teamleider zal de verantwoordelijkheid hebben om alle eindproducten (opgeloste oefeningen, Python-scripts, eindverslag en poster, \ldots) aan de \texttt{main}-branch van deze repository toe te voegen door verschillende branches te mergen.
 	
-	\subsection{Vergaderverslagen} De vergaderverslagen worden door de verslaggever voorbereid in de branch \texttt{0-vergaderingenX}. Ze worden pas in de \texttt{mainX}-branch gemerged door de teamleider nadat ze zijn goedgekeurd door het team (meestal pas de volgende vergadering).
+	\subsection{Wekelijkse deelopdrachten} De wekelijkse opgave wordt in de map \texttt{0-bronnen} van de upstream repository geplaatst door de begeleiders. De knop \texttt{Sync fork} in \github\ laat toe om deze naar de team-repository te halen.
+
+	\subsection{Vergaderverslagen} De vergaderverslagen worden door de verslaggever voorbereid in de branch \texttt{1-vergaderingen}. Ze worden pas in de \texttt{main}-branch gemerged door de teamleider nadat ze zijn goedgekeurd door het team (meestal pas de volgende vergadering).
 	
-	\subsection{Wekelijkse branches} Voor de deelopdrachten zal telkens een nieuwe branch gemaakt worden, startend van de team-repository \texttt{mainX}. De branch \texttt{oefeningenX} is al voorzien, de komende weken komen daar onder meer \texttt{implementatieX}, \texttt{verslagX} en \texttt{posterX} bij, horend bij de deeltaak die jullie in de betreffende week krijgen. De taakverantwoordelijke zal de verantwoordelijkheid hebben om alle deelopdrachten (afzonderlijke oefeningen, scripts of bestanden) in deze branch samen te brengen.
+	\subsection{Wekelijkse branches} Voor de deelopdrachten zal telkens een nieuwe branch gemaakt worden, startend van de hoofdbranch \texttt{main}. De branch \texttt{2-oefeningen} is al voorzien, de komende weken komen daar onder meer \texttt{implementatie}, \texttt{verslag} en \texttt{poster} bij, horend bij de deeltaak die jullie in de betreffende week krijgen. De taakverantwoordelijke zal de verantwoordelijkheid hebben om alle deelopdrachten (afzonderlijke oefeningen, scripts of bestanden) in deze branch samen te brengen.
 	
-	\subsection{Issues voor alle deeltaken} Elke week overlegt het team welke deelopdrachten er zijn. Bij het deel oefeningen zijn dat eenvoudigweg de te maken oefeningen. Voor elke deelopdracht wordt een Issue (\texttt{oefening1},  \texttt{oefening20}, \ldots) gemaakt in de corresponderende branch (\texttt{oefeningenX}). De issues voor de oefeningen zijn al voorzien.
+	\subsection{Issues voor alle deeltaken} Elke week overlegt het team welke deelopdrachten er zijn en de taakverantwoordelijke maakt de corresponderende issues aan. Bij het deel oefeningen zijn dat eenvoudigweg de te maken oefeningen, issues \texttt{oefening01} tot \texttt{oefening13}.
 	
 	Uiteraard is het mogelijk dat er na verloop van tijd nog meer issues bijkomen, bijvoorbeeld een bug die ontdekt wordt in een Python-script of een stuk tekst dat moet herschreven worden.
 	
-	Om het overzicht te bewaren is het aangewezen dat de issues niet allemaal tegelijk worden verdeeld over de teamleden, maar dat elk teamlid maar één issues markeert waar die op dat moment effectief mee bezig is. Het plan van wie wat zal aanpakken, komt natuurlijk wel in het wekelijkse vergaderverslag.
+	\subsection{Taakverdeling met assignees} Tijdens de teamvergadering wordt beslist hóe jullie de taken zullen verdelen. Om het overzicht te bewaren is het aangewezen dat de issues niet allemaal tegelijk worden verdeeld over de teamleden, maar dat elk teamlid maar één issues markeert waar die op dat moment effectief mee bezig is.
 	
 \subsection{Feature branches en langlevende branches}
 
 Er blijkt dus dat er in de teamopdracht, net zoals in het merendeel van de \git-repositories, twee soorten branches zullen worden gebruikt. In de voorbeelden van de eerste secties van deze tekst, werden branches gebruikt om een beperkte wijziging uit te werken. Nadat de wijziging was gemerged met de hoofdbranch, had de branch haar doel bereikt. Dergelijke branches noemt men \emph{feature branches}. Na de merge wordt een feature branch vaak verwijderd omdat alle wijzigingen ondertussen in de hoofdbranch aanwezig zijn. Voorbeelden in de teamopdracht zijn\ldots
 \begin{itemize}
-\item \texttt{oefening1}
+\item \texttt{oefening01}, \ldots, \texttt{oefening13}
 \item \texttt{bug-python-script}
 \item \texttt{spellingscontrole-hoofdstuk5}
+\item \texttt{afbeelding-maken-voor-poster}
 \end{itemize}
 
 Niet alle branches zijn echter tijdelijk. Sommige projecten gebruiken meerdere branches die permanent blijven bestaan en elk een eigen rol hebben. Men spreekt dan van \emph{langlevende branches}. Voorbeelden hiervan in de context van de teamopdracht zijn
 \begin{itemize}
 \item \texttt{teamX-main}
 \item \texttt{teamX-0-vergaderingen}
-\item \texttt{teamX-0-oefeingen}
+\item \texttt{teamX-0-oefeningen}
 \end{itemize}
 
 	\subsection{Commit, push en merge}
@@ -615,7 +618,7 @@ Niet alle branches zijn echter tijdelijk. Sommige projecten gebruiken meerdere b
 	Zolang je eigen bijdragen niet naar \github\ zijn gepushed, bestaan deze niet voor andere teamleden en de begeleiding. Aarzel niet om dat af en toe te doen:
 	\begin{itemize}
 		\item Onmiddellijk bij het afwerken van een issue.
-		\item Blijf niet urenlang staren naar een opdracht als je vast komt te zitten. Beschrijf het probleem waar je mee worstelt en deel het als een sub-issue.
+		\item Blijf niet urenlang staren naar een opdracht als je vast komt te zitten. Beschrijf het probleem waar je mee worstelt en deel het als een nieuwe issue of sub-issue.
 		\item Push ál je materiaal aan het einde van de teamsessie.
 	\end{itemize}
 
