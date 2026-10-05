@@ -1,0 +1,325 @@
+\documentclass
+[kulak] % [kulak|kul|kuleuven-brugge,handout|outline|]
+{kulakbeamer}
+
+\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+
+\title{Werken met Git en Github vanuit VSCode}
+\author{Stijn Rebry}
+\date{Academiejaar 2026 -- 2027}
+
+\definecolor{GitOrange}{RGB}{240,80,50}
+\definecolor{GitHubGray}{RGB}{36,41,46}
+\definecolor{VSCodeBlue}{RGB}{0,122,204}
+
+\renewcommand{\outlineTitle}{Overzicht} % enkel met optie outline
+
+\begin{document}
+	
+	\begin{titleframe}
+		\titlepage
+	\end{titleframe}
+
+    \begin{frame}{Inleiding}
+		\begin{itemize}
+            \item \textbf{Versiebeheer}
+            \begin{itemize}
+                \item Informatie bewaren en herstellen
+                \item Samenwerken aan hetzelfde project
+                \item Gestructureerd werken als team
+            \end{itemize} \pause
+			\item \textbf{Git} bundelt in een repository
+            \begin{itemize}
+                \item projectbestanden
+                \item samen met geschiedenis van aanpassingen en
+                \item parallelle versies van het project
+            \end{itemize} 
+			\item \textbf{GitHub} bewaart repositories online
+            \begin{itemize}
+                \item backup van actuele, vorige en parallelle versies
+                \item samenwerking
+            \end{itemize}
+			\item \textbf{VSCode} is de grafische interface van waaruit we Git aansturen.
+		\end{itemize}
+	\end{frame}
+
+	\begin{outlineframe}[Overzicht]
+		\tableofcontents
+	\end{outlineframe}
+	
+	% ======================================================================
+	\section{Local repository, commits}
+	% ======================================================================
+	
+	\begin{frame}{Lokale map maken en openen in VSCode}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{2.1 Windows Explorer}
+			\begin{itemize}
+				\item Maak map \texttt{C:\textbackslash Projecten}
+				\item Maak submap \texttt{gittest}
+			\end{itemize}
+			\end{block}
+			\begin{block}{2.2 Visual Studio Code}
+			\begin{itemize}
+				\item Open map \texttt{C:\textbackslash Projecten\textbackslash gittest}
+				\item Maak nieuw bestand \texttt{gegevens.txt}\\
+				% \begin{verbatim}
+                \texttt{Naam: Stijn Rebry}\\
+                \texttt{Opleiding: Wiskunde}
+                % \end{verbatim}
+				\item Sla bestand op
+			\end{itemize}
+            \end{block}
+			
+			\column{0.48\textwidth}
+			\begin{alertblock}{Gebruik lokale map, geen cloudopslag.}
+			\begin{itemize}
+				\item Versieconflicten
+				\item Corrupte bestanden
+				\item Prestatieproblemen
+			\end{itemize}
+		\end{alertblock}
+
+		\begin{exampleblock}{Nuttige sneltoetsen}
+			\begin{itemize}
+				\item New file: \texttt{ctrl+N}
+				\item Save file: \texttt{ctrl+S}
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+	\begin{frame}{Lokaal repository initialiseren en eerste commit}
+		\begin{columns}[T]
+		
+			\column{0.48\textwidth}
+			\begin{block}{2.3 Source control}
+				\begin{itemize}
+					\item Open \texttt{Source Control}
+					\item Klik \texttt{Trust}
+					\item Klik \texttt{Initialize Repository}
+				\end{itemize}
+			\end{block}
+
+			\begin{block}<2>{2.4 Source Control, Changes}
+				\begin{itemize}
+					\item Schrijf een commit message
+					\item Klik \texttt{Commit}
+					\item Kies \texttt{Always}
+				\end{itemize}
+			\end{block}
+	
+			\column{0.48\textwidth}
+			\begin{exampleblock}{Changes}
+				\begin{itemize}
+					\item Lijst van aanpassingen:
+					\item \texttt{gegevens.txt A}
+					\item[]
+				\end{itemize}
+			\end{exampleblock}
+
+			\begin{exampleblock}<2>{Graph}
+			\begin{itemize}
+				\item Lijst van commits
+				\item Repository bevat nu één versie
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+\begin{frame}{Repository aanpassen}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{2.5 Editor: \texttt{gegevens.txt}}
+				\begin{itemize}
+				\item Voeg woonplaats toe, sla op
+				\item Bekijk \texttt{Changes} en \texttt{Graph}
+				\item Maak een nieuwe commit
+				\end{itemize}
+			\end{block}
+
+			\begin{block}<2>{2.6 Files toevoegen/verwijderen}
+				\begin{itemize}
+				\item Maak nieuwe files + commit\newline
+                \texttt{brol.txt}, \texttt{steden.txt}
+				\item Verwijder \texttt{brol.txt}
+				\item Pas \texttt{steden.txt} aan + commit
+				\end{itemize}
+			\end{block}
+	
+			\column{0.48\textwidth}
+			\begin{exampleblock}<2>{Graph}
+				Elke commit toont veranderingen:
+				\begin{itemize}
+					\item \texttt{M} -- Modified file
+					\item \texttt{A} -- Added file
+					\item \texttt{D} -- Deleted file
+				\end{itemize}
+			\end{exampleblock}
+
+			\begin{exampleblock}<2>{Editor}
+			Klik op Modified file:
+				\begin{itemize}
+				\item Toevoegingen (groen)
+				\item Verwijderde tekst (rood)
+				\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+\begin{frame}{Werkmap -- Save -- Stage -- Commit -- Repository}
+			\begin{exampleblock}{Terminologie}
+				\begin{itemize}
+				\item Werkmap: lokale map met bestanden
+				\item Stage: selectie van wijzigingen voor volgende commit
+				\item Commit: opgeslagen versie van werkmap op één moment
+				\item Repository: geheel van alle commits, alle aanpassingen en versies
+				\end{itemize}
+			\end{exampleblock}
+	\end{frame}
+
+\section{Repository publiceren op GitHub}
+
+\begin{frame}{Repository publiceren naar GitHub}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{3.1 Source Control}
+				\begin{itemize}
+					\item Publish Branch
+					\item Kies private of public
+					\item Confirm
+				\end{itemize}
+			\end{block}
+
+			\begin{block}{3.2 GitHub}
+				\begin{itemize}
+					\item Klik op \texttt{Repositories}
+					\item Klik op \texttt{gittest}
+				\end{itemize}
+			\end{block}
+	
+			\column{0.48\textwidth}
+			\begin{exampleblock}<2>{GitHub}
+                Twee repositories momenteel identiek:
+				\begin{itemize}
+					\item Verifieer inhoud\newline
+					\texttt{gegevens.txt}, \texttt{steden.txt}
+                    \item Klik op \texttt{Commits}
+				\end{itemize}
+			\end{exampleblock}
+
+			\begin{exampleblock}<2>{Source Control, Graph}
+            \begin{itemize}
+                \item Current item: lokaal repo
+				\item Cloud-icon: online repo
+				\item Zelfde node: beide repo's identiek
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+\begin{frame}{Lokale aanpassingen pushen naar GitHub}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{3.3 Editor: \texttt{gegevens.txt}}
+				\begin{itemize}
+					\item Voeg toe\newline
+					\texttt{Favoriete kleur: rood}
+					\item Save + Commit
+				\end{itemize}
+			\end{block}
+
+			\begin{block}<2>{3.4 Source Control}
+				\begin{itemize}
+					\item Klik op \texttt{Sync Changes}
+				\end{itemize}
+			\end{block}
+	
+			\column{0.48\textwidth}
+			\begin{alertblock}{Commit = lokaal}
+				\begin{itemize}
+                    \item Current $\neq$ Cloud
+					\item Refresh op Github (\texttt{F5})\newline
+					\texttt{gegevens.txt} ongewijzigd
+				\end{itemize}
+			\end{alertblock}
+
+			\begin{exampleblock}<2>{Sync = remote}
+            \begin{itemize}
+                \item Current = Cloud
+				\item Refresh op Github (\texttt{F5})\newline
+				\texttt{gegevens.txt} up to date
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+    
+\begin{frame}{Remote aanpassingen pullen in VSCode}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{3.5 GitHub}
+				\begin{itemize}
+					\item Edit \texttt{gegvevens.txt}\newline
+					\texttt{Hobby: manuals schrijven}
+					\item Klik op \texttt{Commit changes}
+				\end{itemize}
+			\end{block}
+
+			\begin{block}<2->{3.6 Source Control, Changes}
+				\begin{itemize}
+					\item Klik op \texttt{Pull}
+				\end{itemize}
+			\end{block}
+
+	    	\column{0.48\textwidth}
+			\begin{exampleblock}<3>{Terminologie}
+            \begin{itemize}
+                \item Local repo: eigen computer
+                \item Remote repo: GitHub
+                \item Push: wijzigingen náár GitHub sturen
+                \item Pull: wijzigingen van GitHub halen
+			\end{itemize}
+		\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+\section{Werken met branches}
+
+\begin{frame}{Braches maken in local repository}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{exampleblock}{4.1 Branch bekijken}
+            \begin{itemize}
+                \item VSCode: links in statusbalk
+                \item GitHub: pull-down-list
+			\end{itemize}
+		    \end{exampleblock}
+			
+            \begin{block}<2->{4.2 Branch maken in VSCode}
+				\begin{itemize}
+					\item Klik op \texttt{main}
+					\item Klik op \texttt{Create new branch}
+					\item Typ ``Hobbies''
+				\end{itemize}
+			\end{block}
+
+	    	\column{0.48\textwidth}
+			\begin{block}<2->{Branches vergelijken}
+				\begin{itemize}
+					\item Nieuw bestand niet in \texttt{main}
+					\item \texttt{Graph}, \texttt{All history items}
+					\item Inhoud werkmap
+					\item Verborgen map \texttt{.git}
+				\end{itemize}
+			\end{block}
+
+
+
+
+		\end{columns}
+	\end{frame}
+
+\end{document}
