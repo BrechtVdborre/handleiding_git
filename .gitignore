@@ -1,3 +1,6 @@
+# Kopie voor AI
+*.txt
+
 # LaTeX build artifacts
 *.aux
 *.bbl
