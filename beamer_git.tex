@@ -290,35 +290,182 @@
 
 \begin{frame}{Braches maken in local repository}
 		\begin{columns}[T]
-			\column{0.48\textwidth}
-            \begin{exampleblock}{4.1 Branch bekijken}
-            \begin{itemize}
-                \item VSCode: links in statusbalk
-                \item GitHub: pull-down-list
-			\end{itemize}
-		    \end{exampleblock}
-			
-            \begin{block}<2->{4.2 Branch maken in VSCode}
+			\column{0.48\textwidth}			
+            \begin{block}<2->{4.2 VSCode, statusbalk}
 				\begin{itemize}
 					\item Klik op \texttt{main}
 					\item Klik op \texttt{Create new branch}
 					\item Typ ``Hobbies''
 				\end{itemize}
 			\end{block}
+            \begin{block}<3->{4.3 VSCode, branch \texttt{Hobbies}}
+				\begin{itemize}
+					\item Nieuw bestand \texttt{hobbies.txt}
+					\item Vul aan + Save + Commit
+				\end{itemize}
+			\end{block}
 
 	    	\column{0.48\textwidth}
-			\begin{block}<2->{Branches vergelijken}
+                        \begin{exampleblock}{4.1 Current branch}
+            \begin{itemize}
+                \item VSCode: links in statusbalk
+                \item GitHub: pull-down-list
+			\end{itemize}
+		    \end{exampleblock}
+
+			\begin{exampleblock}<4->{Branches vergelijken}
 				\begin{itemize}
 					\item Nieuw bestand niet in \texttt{main}
 					\item \texttt{Graph}, \texttt{All history items}
 					\item Inhoud werkmap
 					\item Verborgen map \texttt{.git}
 				\end{itemize}
+			\end{exampleblock}
+        \end{columns}
+    \end{frame}
+
+        \begin{frame}{Braches maken in GitHub repository}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}{4.4 GitHub}
+            \begin{itemize}
+                \item Klik op \texttt{1 Branch}
+                \item Klik op \texttt{New Branch}
+                \item Typ ``Vakken''
+			\end{itemize}
+		    \end{block}
+			
+            \begin{block}<2->{4.4 GitHub, branch \texttt{vakken}}
+				\begin{itemize}
+					\item Klik op \texttt{Add file}, \texttt{Create new file}
+					\item Bestandsnaam \texttt{vakken.txt}
+					\item Vul aan + Save + Commit
+				\end{itemize}
 			\end{block}
 
+	    	\column{0.48\textwidth}
+			\begin{exampleblock}<3->{Repos vergelijken}
+				\begin{itemize}
+					\item Lokaal: \texttt{main} en \texttt{hobbies}\newline
+					(zonder en met \texttt{hobbies.txt})
+					\item Remote: \texttt{main} en \texttt{vakken}\newline
+					(zonder en met \texttt{vakken.txt})
+                    \item Derde branch onbekend in andere repo
+				\end{itemize}
+			\end{exampleblock}
+		\end{columns}
+	\end{frame}
 
+        \begin{frame}{Branches fetchen, pullen en pushen}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}<2->{4.5 Source Control, Changes}
+				\begin{itemize}
+					\item Klik op \texttt{Fetch}
+				\end{itemize}
+			\end{block}
+            \begin{block}<3->{4.6 Branch selector}
+				\begin{itemize}
+					\item \texttt{Create New Local Branch From}
+					\item Kies \texttt{orgn/vakken}, typ ``vakken''
+				\end{itemize}
+			\end{block}
+            \begin{block}<4->{4.7 Branch \texttt{hobbies}}
+				\begin{itemize}
+					\item Klik op \texttt{Publish Branch}
+				\end{itemize}
+			\end{block}
+	    	\column{0.48\textwidth}
+            \begin{exampleblock}{VSCode, branch selector}
+            \begin{itemize}
+                \item Lokaal: \texttt{main}, \texttt{hobbies}\only<3->{, \alert<3>{\texttt{vakken}}}
+                \item Remote: \texttt{orgn/main}\only<2->{, \alert<2>{\texttt{orgn/vakken}}}\only<4->{, \alert<4>{\texttt{orgn/hobbies}}}
+                \item<only@1> Onbekend: \texttt{orgn/vakken}
+                \item<only@-3> Onbestaand: \only<-2>{\texttt{vakken}, }\texttt{orgn/hobbies}
+			\end{itemize}
+		    \end{exampleblock}
+            \begin{exampleblock}{GitHub}
+            \begin{itemize}
+                \item Repos: \texttt{main}, \texttt{vakken}\only<4->{, \alert<4>{\texttt{vakken}}}
+                \item<only@-3> Onbestaand: \texttt{hobbies}
+			\end{itemize}
+		    \end{exampleblock}
+            \begin{exampleblock}<5>{Source Control, Graph}
+            \begin{itemize}
+                \item Check de kleurtjes!
+			\end{itemize}
+		    \end{exampleblock}
+		\end{columns}
+	\end{frame}
 
+    \begin{frame}{Branch -- Fetch -- Pull -- Push}
+            \begin{exampleblock}{Terminologie}
+				\begin{itemize}
+					\item Branch: alternatieve versie van de repository.
+\item \texttt{main}: hoofdbranch, bevat stabiele versie van project.
+\item Fetch: check GitHub voor nieuwe branches en commits, nog geen lokale
+wijzigingen.
+\item Pull en Push: afzonderlijk voor elke branch.
+				\end{itemize}
+			\end{exampleblock}
+	\end{frame}
 
+    \section{Samenvoegen van branches: merge}
+
+        \begin{frame}{Lokale merge van \texttt{hobbies} in \texttt{main}}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}<2->{5.1 Source Control}
+				\begin{itemize}
+                    \item Selecteer doelbranch \texttt{main}
+					\item Klik op \texttt{Changes}, \texttt{More actions}
+					\item Kies \texttt{Branch}, \texttt{Merge...}
+					\item Klik op bronbranch \texttt{hobbies}
+					\item<only@3-|alert@3> \texttt{Changes}, klik op \texttt{Push}
+				\end{itemize}
+			\end{block}
+	    	\column{0.48\textwidth}
+            \begin{exampleblock}{\only<1>{Vóór}\only<2->{\alert<2>{Na}} de merge\only<3->{\alert<3>{ en push}}}
+            \begin{itemize}
+                 \item \texttt{main}: \only<1>{geen}\only<2->{\alert<2>{wel}} bestand \texttt{hobbies.txt}
+                 \item \only<1>{Afzonderlijke Takken}\texttt{main} en \texttt{hobbies} \only<2->{\alert<2>{vloeien terug samen}}
+                 \item Local en remote \only<1>{in}\only<3>{\alert<3>{back in}}\only<2>{\alert<2>{out of}} sync
+			\end{itemize}
+		    \end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+        \begin{frame}{Remote merge van \texttt{vakken} in \texttt{main}}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}{5.2 GitHub -- Contributor}
+				\begin{itemize}
+                    \item \texttt{Pull Request} + \texttt{New pull req.}
+					\item Doelbranch, \texttt{Base}: \texttt{main}
+					\item Bronbranch, \texttt{Compare}: \texttt{vakken}
+					\item \texttt{Create pull request}
+				\end{itemize}
+			\end{block}
+            \begin{block}<2->{5.2 GitHub -- Reviewer}
+				\begin{itemize}
+                    \item \texttt{Merge pull request} + \texttt{Confirm}
+				\end{itemize}
+			\end{block}
+	    	\column{0.48\textwidth}
+            \begin{block}<only@3->{5.2 VSCode, \texttt{Changes}}
+				\begin{itemize}
+                    \item \texttt{Fetch}
+                    \item<uncover@4-> \texttt{Pull}
+				\end{itemize}
+                \end{block}
+            \begin{exampleblock}{\only<1>{Vóór}\only<2->{\alert<2>{Na}} de merge\only<3->{\alert<3>{ en push}}}
+            \begin{itemize}
+                 \item \texttt{main}: \only<1>{geen}\only<2->{\alert<2>{wel}} bestand \texttt{vakken.txt}
+                 \item \only<3->{Afzonderlijke }takken \texttt{main} en \texttt{hobbies} \only<2->{\alert<2>{terug samen}}
+                 \item Local en remote \only<1>{in}\only<3>{\alert<3>{back in}}\only<2>{\alert<2>{out of}} sync
+			\end{itemize}
+		    \end{exampleblock}
+			
 		\end{columns}
 	\end{frame}
 
