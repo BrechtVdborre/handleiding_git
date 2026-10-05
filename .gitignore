@@ -1,5 +1,6 @@
-# Kopie voor AI
+# Andere
 *.txt
+*.svg
 
 # LaTeX build artifacts
 *.aux
