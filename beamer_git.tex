@@ -474,30 +474,41 @@ wijzigingen.
  \begin{frame}{Merge van bestand zonder conflict}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
-            \begin{block}{5.3 Branch selector}
+            \begin{block}{5.3 Nieuwe branch \texttt{Programmeertaal}}
 				\begin{itemize}
-                    \item Nieuwe branch \texttt{Programmeertaal}
 					\item Laatste lijn \texttt{gegevens.txt}
-					\item[] \texttt{Programmeertaal: R} + Commit
+					\item[] \texttt{Programmeertaal: R}
+					\item Save + Commit
 				\end{itemize}
 			\end{block}
             \begin{block}<2->{5.3 Branch \texttt{main}}
 				\begin{itemize}
 					\item Eerste lijn \texttt{gegevens.txt}
-					\item[] \texttt{Programmeertaal: R} + Commit
-				\end{itemize}
-			\end{block}
-			\begin{block}<2->{5.3 Changes, }
-				\begin{itemize}
-					\item Eerste lijn \texttt{gegevens.txt}
-					\item[] \texttt{Programmeertaal: R} + Commit
+					\item[] \texttt{Programmeertaal: R}
+					\item Save + Commit
 				\end{itemize}
 			\end{block}
 	    	\column{0.48\textwidth}
-            \begin{exampleblock}<only@2->{Vergelijk \texttt{gegevens.txt}}
+			\begin{exampleblock}<only@2>{Vergelijk \texttt{gegevens.txt}}
 				\begin{itemize}
-                    \item Branch \texttt{programmeertaal}: geen r-nummer
-                    \item Branch \texttt{main}: geen programmeertaal
+                    \item Branch \texttt{main}:
+                    \item[]  geen programmeertaal
+					\item Branch \texttt{programmeertaal}:
+					\item[] geen r-nummer
+				\end{itemize}
+                \end{exampleblock}
+			\begin{block}<3->{5.3 Branch \texttt{main}}
+				\begin{itemize}
+					\item Changes, More Actions
+					\item Merge \texttt{programmeertaal} in \texttt{main}
+				\end{itemize}
+			\end{block}
+			\begin{exampleblock}<only@3->{Vergelijk \texttt{gegevens.txt}}
+				\begin{itemize}
+					\item Branch \texttt{main}:
+					\item[] beide aanpassingen!
+					\item Branch \texttt{programmeertaal}:
+					\item[] ongewijzigd
 				\end{itemize}
                 \end{exampleblock}
 			\end{columns}
