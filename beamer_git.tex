@@ -1,5 +1,5 @@
 \documentclass
-[kulak] % [kulak|kul|kuleuven-brugge,handout|outline|]
+[kulak,outline] % [kulak|kul|kuleuven-brugge,handout|outline|]
 {kulakbeamer}
 
 \usepackage[dutch]{babel}
@@ -16,14 +16,20 @@
 \renewcommand{\outlineTitle}{Overzicht} % enkel met optie outline
 
 \begin{document}
-	
+
+	\begin{outlineframe}[Overzicht]
+		\tableofcontents
+	\end{outlineframe}
+
 	\begin{titleframe}
 		\titlepage
 	\end{titleframe}
 
-    \begin{frame}{Inleiding}
+	\section{Inleiding \& software}
+
+    \begin{frame}{Versiebeheer en software}
 		\begin{itemize}
-            \item \textbf{Versiebeheer}
+            \item \textbf{Doel}
             \begin{itemize}
                 \item Informatie bewaren en herstellen
                 \item Samenwerken aan hetzelfde project
@@ -31,22 +37,18 @@
             \end{itemize} \pause
 			\item \textbf{Git} bundelt in een repository
             \begin{itemize}
-                \item projectbestanden
+                \item werkmap met projectbestanden
                 \item samen met geschiedenis van aanpassingen en
                 \item parallelle versies van het project
             \end{itemize} 
 			\item \textbf{GitHub} bewaart repositories online
             \begin{itemize}
                 \item backup van actuele, vorige en parallelle versies
-                \item samenwerking
+                \item tools voor samenwerking en gestructureerd werken
             \end{itemize}
 			\item \textbf{VSCode} is de grafische interface van waaruit we Git aansturen.
 		\end{itemize}
 	\end{frame}
-
-	\begin{outlineframe}[Overzicht]
-		\tableofcontents
-	\end{outlineframe}
 	
 	% ======================================================================
 	\section{Local repository, commits}
@@ -428,7 +430,7 @@ wijzigingen.
             \begin{exampleblock}{\only<1>{Vóór}\only<2->{\alert<2>{Na}} de merge\only<3->{\alert<3>{ en push}}}
             \begin{itemize}
                  \item \texttt{main}: \only<1>{geen}\only<2->{\alert<2>{wel}} bestand \texttt{hobbies.txt}
-                 \item \only<1>{Afzonderlijke Takken}\texttt{main} en \texttt{hobbies} \only<2->{\alert<2>{vloeien terug samen}}
+                 \item \only<1>{Afzonderlijke takken} \texttt{main} en \texttt{hobbies} \only<2->{\alert<2>{vloeien terug samen}}
                  \item Local en remote \only<1>{in}\only<3>{\alert<3>{back in}}\only<2>{\alert<2>{out of}} sync
 			\end{itemize}
 		    \end{exampleblock}
@@ -454,19 +456,52 @@ wijzigingen.
 	    	\column{0.48\textwidth}
             \begin{block}<only@3->{5.2 VSCode, \texttt{Changes}}
 				\begin{itemize}
-                    \item \texttt{Fetch}
-                    \item<uncover@4-> \texttt{Pull}
+                    \item \texttt{Fetch} \only<4->{\alert<4>{ + \texttt{Pull}}}
 				\end{itemize}
                 \end{block}
-            \begin{exampleblock}{\only<1>{Vóór}\only<2->{\alert<2>{Na}} de merge\only<3->{\alert<3>{ en push}}}
+            \begin{exampleblock}{\only<1>{Vóór}\only<2->{\alert<2>{Na}} de merge\only<3->{\alert<3>{ en fetch}}\only<4->{\alert<4>{ en pull}}}
             \begin{itemize}
+				\item[] GitHub:
                  \item \texttt{main}: \only<1>{geen}\only<2->{\alert<2>{wel}} bestand \texttt{vakken.txt}
-                 \item \only<3->{Afzonderlijke }takken \texttt{main} en \texttt{hobbies} \only<2->{\alert<2>{terug samen}}
-                 \item Local en remote \only<1>{in}\only<3>{\alert<3>{back in}}\only<2>{\alert<2>{out of}} sync
+                 \item[] VSCode:
+                 \item Local en remote \only<-2>{in}\only<3>{\alert<3>{out of}}\only<4>{\alert<4>{back in}} sync
+				 \item \only<-3>{Afzonderlijke takken} \texttt{main} en \texttt{hobbies} \only<4>{\alert<4>{vloeien terug samen}}
 			\end{itemize}
 		    \end{exampleblock}
-			
-		\end{columns}
+			\end{columns}
 	\end{frame}
+
+ \begin{frame}{Merge van bestand zonder conflict}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}{5.3 Branch selector}
+				\begin{itemize}
+                    \item Nieuwe branch \texttt{Programmeertaal}
+					\item Laatste lijn \texttt{gegevens.txt}
+					\item[] \texttt{Programmeertaal: R} + Commit
+				\end{itemize}
+			\end{block}
+            \begin{block}<2->{5.3 Branch \texttt{main}}
+				\begin{itemize}
+					\item Eerste lijn \texttt{gegevens.txt}
+					\item[] \texttt{Programmeertaal: R} + Commit
+				\end{itemize}
+			\end{block}
+			\begin{block}<2->{5.3 Changes, }
+				\begin{itemize}
+					\item Eerste lijn \texttt{gegevens.txt}
+					\item[] \texttt{Programmeertaal: R} + Commit
+				\end{itemize}
+			\end{block}
+	    	\column{0.48\textwidth}
+            \begin{exampleblock}<only@2->{Vergelijk \texttt{gegevens.txt}}
+				\begin{itemize}
+                    \item Branch \texttt{programmeertaal}: geen r-nummer
+                    \item Branch \texttt{main}: geen programmeertaal
+				\end{itemize}
+                \end{exampleblock}
+			\end{columns}
+	\end{frame}
+
 
 \end{document}
