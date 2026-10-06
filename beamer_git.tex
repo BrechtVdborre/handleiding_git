@@ -13,6 +13,11 @@
 \definecolor{GitHubGray}{RGB}{36,41,46}
 \definecolor{VSCodeBlue}{RGB}{0,122,204}
 
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+%\patchcmd{\beamer@sectionintoc}{\vfill}{\vskip0.2em}{}{}
+\makeatother
+
 \renewcommand{\outlineTitle}{Overzicht} % enkel met optie outline
 
 \begin{document}
@@ -136,7 +141,8 @@
 			\column{0.48\textwidth}
 			\begin{block}{2.5 Editor: \texttt{gegevens.txt}}
 				\begin{itemize}
-				\item Voeg woonplaats toe, sla op
+				\item Voeg extra lijn toe:
+				\item[] \texttt{Woonplaats: Gent}
 				\item Bekijk \texttt{Changes} en \texttt{Graph}
 				\item Maak een nieuwe commit
 				\end{itemize}
@@ -144,10 +150,10 @@
 
 			\begin{block}<2>{2.6 Files toevoegen/verwijderen}
 				\begin{itemize}
-				\item Maak nieuwe files + commit\newline
-                \texttt{brol.txt}, \texttt{steden.txt}
+				\item 
+                \texttt{brol.txt}, \texttt{steden.txt} + Commit
 				\item Verwijder \texttt{brol.txt}
-				\item Pas \texttt{steden.txt} aan + commit
+				\item Pas \texttt{steden.txt} aan + Commit
 				\end{itemize}
 			\end{block}
 	
@@ -242,7 +248,7 @@
 			\column{0.48\textwidth}
 			\begin{alertblock}{Commit = lokaal}
 				\begin{itemize}
-                    \item Current $\neq$ Cloud
+                    \item Current \(\neq\) Cloud
 					\item Refresh op Github (\texttt{F5})\newline
 					\texttt{gegevens.txt} ongewijzigd
 				\end{itemize}
@@ -404,12 +410,17 @@
             \begin{exampleblock}{Terminologie}
 				\begin{itemize}
 					\item Branch: alternatieve versie van de repository.
-\item \texttt{main}: hoofdbranch, bevat stabiele versie van project.
-\item Fetch: check GitHub voor nieuwe branches en commits, nog geen lokale
-wijzigingen.
-\item Pull en Push: afzonderlijk voor elke branch.
+					\item \texttt{main}: hoofdbranch, bevat stabiele versie van project.
+					\item Fetch: check GitHub voor nieuwe branches en commits, nog geen lokale wijzigingen.
+					\item Pull en Push: afzonderlijk voor elke branch.
 				\end{itemize}
 			\end{exampleblock}
+			\begin{alertblock}{Good Practice}
+				\begin{itemize}
+				\item Zet \texttt{main} niet lokaal
+				\item Werk altijd in secundaire branch
+				\end{itemize}
+			\end{alertblock}
 	\end{frame}
 
     \section{Samenvoegen van branches: merge}
@@ -474,7 +485,7 @@ wijzigingen.
  \begin{frame}{Merge van bestand zonder conflict}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
-            \begin{block}{5.3 Nieuwe branch \texttt{Programmeertaal}}
+            \begin{block}{5.3 Nieuwe branch \texttt{programmeertaal}}
 				\begin{itemize}
 					\item Laatste lijn \texttt{gegevens.txt}
 					\item[] \texttt{Programmeertaal: R}
@@ -514,5 +525,140 @@ wijzigingen.
 			\end{columns}
 	\end{frame}
 
+	 \begin{frame}{Merge van bestand \alert{met} conflict}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}{5.3 Nieuwe branch \texttt{conflict}}
+				\begin{itemize}
+					\item Verander lijn in \texttt{gegevens.txt}
+					\item[] \texttt{Woonplaats: Utopia}
+					\item Save + Commit
+				\end{itemize}
+			\end{block}
+            \begin{block}<2->{5.3 Branch \texttt{main}}
+				\begin{itemize}
+					\item Verander zelfde lijn in \texttt{gegevens.txt}
+					\item[] \texttt{Woonplaats: Camelot}
+					\item Save + Commit
+				\end{itemize}
+			\end{block}
+	    	\column{0.48\textwidth}
+			\begin{alertblock}<3->{Conflict}
+				Aanpassingen in zelfde lijn kunnen niet automatisch samengevoegd worden
+			\end{alertblock}
+						\begin{block}<3->{5.3 Merge \texttt{conflict} in \texttt{main}}
+				\begin{itemize}
+                    \item Branch \texttt{main}
+                    \item \texttt{Changes}, \texttt{More Actions},\newline
+					\texttt{Branch}, \texttt{Merge}
+                    \item Kies bronbranch \texttt{conflict}
+                    \item Kies lijn(en) om te behouden
+                    \item Stage changes + Commit
+				\end{itemize}
+                \end{block}
+			\end{columns}
+	\end{frame}
+
+   \begin{frame}{Branch -- Fetch -- Pull -- Push}
+            \begin{exampleblock}{Terminologie}
+				\begin{itemize}
+					\item Merge commit: een commit die het resultaat van een merge bewaart.
+\item Bronbranch: waarvan wijzigingen worden overgenomen.
+\item Doelbranch: waarin wijzigingen worden opgenomen.
+\item Pull request: vraag van contributor om aanpassingen in doelbranch op te nemen.
+\item Reviewer: inspecteert wijzigingen vóór merge.
+\item Merge conflict: aanpassingen waarbij Git niet automatisch kan bepalen welke moeten worden
+behouden.
+				\end{itemize}
+			\end{exampleblock}
+	\end{frame}
+
+\section{Starten van een bestaand repository}
+
+	 \begin{frame}{Fork - kopie van repo van andere eigenaar}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}<2->{6.1 Open repo op GitHub}
+				\begin{itemize}
+					\item Klik \texttt{Fork} rechtsboven
+					\item Kies naam en bevestig
+					\item Kopie van (volledige) repo
+				\end{itemize}
+			\end{block}
+	    	\column{0.48\textwidth}
+			\begin{alertblock}{Publiek repository}
+			\begin{itemize}
+				\item Andere eigenaar
+				\item Geen schrijfrechten
+				\item Kopie voor eigen gebruik
+			\end{itemize}
+			\end{alertblock}
+			\end{columns}
+				\begin{exampleblock}<2->{Terminologie}
+					\begin{itemize}
+                    \item Upstream repo = Oorspronkelijke repo, andere eigenaar
+                    \item Fork = Nieuw repo, eigen account
+					\item \texttt{Pull Request}: commits van fork voorstellen aan upstream repo
+					\item \texttt{Sync fork}: commits van upstream repo mergen in fork
+				\end{itemize}
+			\end{exampleblock}
+	\end{frame}
+
+	 \begin{frame}{Clone - lokale kopie van online repository}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}{6.2 Open repo op GitHub}
+				\begin{itemize}
+					\item Klik op \texttt{Code}
+					\item Kopieer HTTPS-link
+				\end{itemize}
+			\end{block}
+			\begin{block}{6.2 Github}
+				\begin{itemize}
+					\item Nieuw venster (\texttt{ctrl+shift+N})
+					\item Clone repository
+					\item Plak HTTPS-link
+					\item Kies lokale werkmap 
+				\end{itemize}
+			\end{block}
+	    	\column{0.48\textwidth}
+			\begin{exampleblock}{Terminologie}
+				\begin{itemize}
+					\item Origin: remote repo, bron van Clone
+					\item Clone: lokale kopie van repository
+				\end{itemize}
+			\end{exampleblock}
+		\end{columns}
+	\end{frame}
+
+\section{Issues en assignees}
+
+	 \begin{frame}{Issues en assignees}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+            \begin{block}{7.1 Open repo op GitHub}
+				\begin{itemize}
+					\item Klik op \texttt{Issues}, \texttt{New issue}
+					\item Geef een titel en omschrijving \item Klik op \texttt{Create}
+				\end{itemize}
+			\end{block}
+	    	\column{0.48\textwidth}
+			\begin{block}{7.2 Branch en assignee}
+				\begin{itemize}
+					\item Assignees: klik op tandwiel
+					\item Development: \texttt{Create a branch}
+				\end{itemize}
+			\end{block}
+			\end{columns}
+			\begin{exampleblock}{Workflow}
+				\begin{itemize}
+					\item Taakverantwoordelijke maakt issue voor elke opdracht (zonder assignee)
+					\item Contributor stelt zichzelf in als assignee bij start aan opdracht
+					\item Issue opgelost: assignee doet merge request
+					\item Taakverantwoordelijke behandelt merge request
+				\end{itemize}
+			\end{exampleblock}
+		
+	\end{frame}
 
 \end{document}
