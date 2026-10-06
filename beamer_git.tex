@@ -5,17 +5,21 @@
 \usepackage[dutch]{babel}
 \usepackage[T1]{fontenc}
 
-\title{Werken met Git en Github vanuit VSCode}
+\graphicspath{{afbeeldingen/}}
+
+\title{Werken met \git\ en \github\ vanuit \vscode}
 \author{Stijn Rebry}
 \date{Academiejaar 2026 -- 2027}
 
 \makeatletter
-%\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
 \patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vfill}{}{}
-%\patchcmd{\beamer@sectionintoc}{\vfill}{\vskip0.2em}{}{}
 \makeatother
 
 \renewcommand{\outlineTitle}{Overzicht} % enkel met optie outline
+
+\newcommand{\vscode}{\includegraphics[width=1.5ex]{vscode}\texttt{VS}\hspace{.1ex}\texttt{Code}}
+\newcommand{\git}{\includegraphics[width=1.5ex]{git}\texttt{Git}}
+\newcommand{\github}{\includegraphics[width=1.5ex]{github}\texttt{GitHub}}
 
 \begin{document}
 
@@ -33,18 +37,18 @@
                 \item Samenwerken aan hetzelfde project
                 \item Gestructureerd werken als team
             \end{itemize} \pause
-			\item \textbf{Git} bundelt in een repository
+			\item \git\ bundelt in een repository
             \begin{itemize}
                 \item werkmap met projectbestanden
                 \item samen met geschiedenis van aanpassingen en
                 \item parallelle versies van het project
             \end{itemize} 
-			\item \textbf{GitHub} bewaart repositories online
+			\item \github\ bewaart repositories online
             \begin{itemize}
                 \item backup van actuele, vorige en parallelle versies
                 \item tools voor samenwerking en gestructureerd werken
             \end{itemize}
-			\item \textbf{VSCode} is de grafische interface van waaruit we Git aansturen.
+			\item \vscode\ is de grafische interface van waaruit we Git aansturen.
 		\end{itemize}
 	\end{frame}
 	
@@ -52,7 +56,7 @@
 	\section{Local repository, commits}
 	% ======================================================================
 	
-	\begin{frame}{Lokale map maken en openen in VSCode}
+	\begin{frame}{Lokale map maken en openen in \vscode}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
 			\begin{block}{2.1 Windows Explorer}
@@ -61,7 +65,7 @@
 				\item Maak submap \texttt{gittest}
 			\end{itemize}
 			\end{block}
-			\begin{block}{2.2 Visual Studio Code}
+			\begin{block}{2.2 \vscode}
 			\begin{itemize}
 				\item Open map \texttt{C:\textbackslash Projecten\textbackslash gittest}
 				\item Maak nieuw bestand \texttt{gegevens.txt}\\
@@ -181,9 +185,9 @@
 			\end{exampleblock}
 	\end{frame}
 
-\section{Repository publiceren op GitHub}
+\section{Repository publiceren op \github}
 
-\begin{frame}{Repository publiceren naar GitHub}
+\begin{frame}{Repository publiceren naar \github}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
 			\begin{block}{3.1 Source Control}
@@ -194,7 +198,7 @@
 				\end{itemize}
 			\end{block}
 
-			\begin{block}{3.2 GitHub}
+			\begin{block}{3.2 \github}
 				\begin{itemize}
 					\item Klik op \texttt{Repositories}
 					\item Klik op \texttt{gittest}
@@ -202,7 +206,7 @@
 			\end{block}
 	
 			\column{0.48\textwidth}
-			\begin{exampleblock}<2>{GitHub}
+			\begin{exampleblock}<2>{\github}
                 Twee repositories momenteel identiek:
 				\begin{itemize}
 					\item Verifieer inhoud\newline
@@ -221,7 +225,7 @@
 		\end{columns}
 	\end{frame}
 
-\begin{frame}{Lokale aanpassingen pushen naar GitHub}
+\begin{frame}{Lokale aanpassingen pushen naar \github}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
 			\begin{block}{3.3 Editor: \texttt{gegevens.txt}}
@@ -242,7 +246,7 @@
 			\begin{alertblock}{Commit = lokaal}
 				\begin{itemize}
                     \item Current \(\neq\) Cloud
-					\item Refresh op Github (\texttt{F5})\newline
+					\item Refresh op \github\ (\texttt{F5})\newline
 					\texttt{gegevens.txt} ongewijzigd
 				\end{itemize}
 			\end{alertblock}
@@ -250,7 +254,7 @@
 			\begin{exampleblock}<2>{Sync = remote}
             \begin{itemize}
                 \item Current = Cloud
-				\item Refresh op Github (\texttt{F5})\newline
+				\item Refresh op \github\ (\texttt{F5})\newline
 				\texttt{gegevens.txt} up to date
 			\end{itemize}
 		\end{exampleblock}
@@ -258,10 +262,10 @@
 	\end{frame}
 
     
-\begin{frame}{Remote aanpassingen pullen in VSCode}
+\begin{frame}{Remote aanpassingen pullen in \vscode}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
-			\begin{block}{3.5 GitHub}
+			\begin{block}{3.5 \github}
 				\begin{itemize}
 					\item Edit \texttt{gegvevens.txt}\newline
 					\texttt{Hobby: manuals schrijven}
@@ -279,9 +283,9 @@
 			\begin{exampleblock}<3>{Terminologie}
             \begin{itemize}
                 \item Local repo: eigen computer
-                \item Remote repo: GitHub
-                \item Push: wijzigingen náár GitHub sturen
-                \item Pull: wijzigingen van GitHub halen
+                \item Remote repo: \github
+                \item Push: wijzigingen náár \github\ sturen
+                \item Pull: wijzigingen van \github\ halen
 			\end{itemize}
 		\end{exampleblock}
 		\end{columns}
@@ -292,14 +296,14 @@
 \begin{frame}{Braches maken in local repository}
 		\begin{columns}[T]
 			\column{0.48\textwidth}			
-            \begin{block}<2->{4.2 VSCode, statusbalk}
+            \begin{block}<2->{4.2 \vscode, statusbalk}
 				\begin{itemize}
 					\item Klik op \texttt{main}
 					\item Klik op \texttt{Create new branch}
 					\item Typ ``Hobbies''
 				\end{itemize}
 			\end{block}
-            \begin{block}<3->{4.3 VSCode, branch \texttt{Hobbies}}
+            \begin{block}<3->{4.3 \vscode, branch \texttt{Hobbies}}
 				\begin{itemize}
 					\item Nieuw bestand \texttt{hobbies.txt}
 					\item Vul aan + Save + Commit
@@ -309,8 +313,8 @@
 	    	\column{0.48\textwidth}
                         \begin{exampleblock}{4.1 Current branch}
             \begin{itemize}
-                \item VSCode: links in statusbalk
-                \item GitHub: pull-down-list
+                \item \vscode: links in statusbalk
+                \item \github: pull-down-list
 			\end{itemize}
 		    \end{exampleblock}
 
@@ -325,10 +329,10 @@
         \end{columns}
     \end{frame}
 
-        \begin{frame}{Braches maken in GitHub repository}
+        \begin{frame}{Braches maken in \github\ repository}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
-            \begin{block}{4.4 GitHub}
+            \begin{block}{4.4 \github}
             \begin{itemize}
                 \item Klik op \texttt{1 Branch}
                 \item Klik op \texttt{New Branch}
@@ -336,7 +340,7 @@
 			\end{itemize}
 		    \end{block}
 			
-            \begin{block}<2->{4.4 GitHub, branch \texttt{vakken}}
+            \begin{block}<2->{4.4 \github, branch \texttt{vakken}}
 				\begin{itemize}
 					\item Klik op \texttt{Add file}, \texttt{Create new file}
 					\item Bestandsnaam \texttt{vakken.txt}
@@ -377,7 +381,7 @@
 				\end{itemize}
 			\end{block}
 	    	\column{0.48\textwidth}
-            \begin{exampleblock}{VSCode, branch selector}
+            \begin{exampleblock}{\vscode, branch selector}
             \begin{itemize}
                 \item Lokaal: \texttt{main}, \texttt{hobbies}\only<3->{, \alert<3>{\texttt{vakken}}}
                 \item Remote: \texttt{orgn/main}\only<2->{, \alert<2>{\texttt{orgn/vakken}}}\only<4->{, \alert<4>{\texttt{orgn/hobbies}}}
@@ -385,7 +389,7 @@
                 \item<only@-3> Onbestaand: \only<-2>{\texttt{vakken}, }\texttt{orgn/hobbies}
 			\end{itemize}
 		    \end{exampleblock}
-            \begin{exampleblock}{GitHub}
+            \begin{exampleblock}{\github}
             \begin{itemize}
                 \item Repos: \texttt{main}, \texttt{vakken}\only<4->{, \alert<4>{\texttt{vakken}}}
                 \item<only@-3> Onbestaand: \texttt{hobbies}
@@ -404,7 +408,7 @@
 				\begin{itemize}
 					\item Branch: alternatieve versie van de repository.
 					\item \texttt{main}: hoofdbranch, bevat stabiele versie van project.
-					\item Fetch: check GitHub voor nieuwe branches en commits, nog geen lokale wijzigingen.
+					\item Fetch: check \github\ voor nieuwe branches en commits, nog geen lokale wijzigingen.
 					\item Pull en Push: afzonderlijk voor elke branch.
 				\end{itemize}
 			\end{exampleblock}
@@ -444,7 +448,7 @@
         \begin{frame}{Remote merge van \texttt{vakken} in \texttt{main}}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
-            \begin{block}{5.2 GitHub -- Contributor}
+            \begin{block}{5.2 \github\ -- Contributor}
 				\begin{itemize}
                     \item \texttt{Pull Request} + \texttt{New pull req.}
 					\item Doelbranch, \texttt{Base}: \texttt{main}
@@ -452,22 +456,22 @@
 					\item \texttt{Create pull request}
 				\end{itemize}
 			\end{block}
-            \begin{block}<2->{5.2 GitHub -- Reviewer}
+            \begin{block}<2->{5.2 \github\ -- Reviewer}
 				\begin{itemize}
                     \item \texttt{Merge pull request} + \texttt{Confirm}
 				\end{itemize}
 			\end{block}
 	    	\column{0.48\textwidth}
-            \begin{block}<only@3->{5.2 VSCode, \texttt{Changes}}
+            \begin{block}<only@3->{5.2 \vscode, \texttt{Changes}}
 				\begin{itemize}
                     \item \texttt{Fetch} \only<4->{\alert<4>{ + \texttt{Pull}}}
 				\end{itemize}
                 \end{block}
             \begin{exampleblock}{\only<1>{Vóór}\only<2->{\alert<2>{Na}} de merge\only<3->{\alert<3>{ en fetch}}\only<4->{\alert<4>{ en pull}}}
             \begin{itemize}
-				\item[] GitHub:
+				\item[] \github:
                  \item \texttt{main}: \only<1>{geen}\only<2->{\alert<2>{wel}} bestand \texttt{vakken.txt}
-                 \item[] VSCode:
+                 \item[] \vscode:
                  \item Local en remote \only<-2>{in}\only<3>{\alert<3>{out of}}\only<4>{\alert<4>{back in}} sync
 				 \item \only<-3>{Afzonderlijke takken} \texttt{main} en \texttt{hobbies} \only<4>{\alert<4>{vloeien terug samen}}
 			\end{itemize}
@@ -571,7 +575,7 @@ behouden.
 	 \begin{frame}{Fork - kopie van repo van andere eigenaar}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
-            \begin{block}<2->{6.1 Open repo op GitHub}
+            \begin{block}<2->{6.1 Open repo op \github}
 				\begin{itemize}
 					\item Klik \texttt{Fork} rechtsboven
 					\item Kies naam en bevestig
@@ -600,13 +604,13 @@ behouden.
 	 \begin{frame}{Clone - lokale kopie van online repository}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
-            \begin{block}{6.2 Open repo op GitHub}
+            \begin{block}{6.2 Open repo op \github}
 				\begin{itemize}
 					\item Klik op \texttt{Code}
 					\item Kopieer HTTPS-link
 				\end{itemize}
 			\end{block}
-			\begin{block}{6.2 Github}
+			\begin{block}{6.2 \github}
 				\begin{itemize}
 					\item Nieuw venster (\texttt{ctrl+shift+N})
 					\item Clone repository
@@ -629,7 +633,7 @@ behouden.
 	 \begin{frame}{Issues en assignees}
 		\begin{columns}[T]
 			\column{0.48\textwidth}
-            \begin{block}{7.1 Open repo op GitHub}
+            \begin{block}{7.1 Open repo op \github}
 				\begin{itemize}
 					\item Klik op \texttt{Issues}, \texttt{New issue}
 					\item Geef een titel en omschrijving \item Klik op \texttt{Create}
